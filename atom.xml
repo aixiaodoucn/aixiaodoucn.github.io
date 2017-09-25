@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-25T07:45:36.798Z</updated>
+  <updated>2017-09-25T08:13:41.383Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2017/09/25/hexo-d-%E6%97%A0%E5%8F%8D%E5%BA%94/"/>
     <id>http://yoursite.com/2017/09/25/hexo-d-无反应/</id>
     <published>2017-09-25T06:31:48.000Z</published>
-    <updated>2017-09-25T07:45:36.798Z</updated>
+    <updated>2017-09-25T08:13:41.383Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="问题-输入-hexo-d-无反应"><a href="#问题-输入-hexo-d-无反应" class="headerlink" title="问题 : 输入  hexo  d   无反应"></a>问题 : 输入  hexo  d   无反应</h4><a id="more"></a><h4 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h4><p>1.打开 _ config.yml   文件</p><p>​    deploy 下按照下图输入，repo 填写自己的 github 仓库地址</p><p><img src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925143002.png" alt="20170925143002"></p><p>2.输入</p><p>$npm install hexo-deployer-git  -save</p><p><img src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925142942.png" alt="20170925142942"></p><p>3.输入  hexo   d    </p><p>​</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="问题-输入-hexo-d-无反应"><a href="#问题-输入-hexo-d-无反应" class="headerlink" title="问题 : 输入  hexo  d   无反应"></a>问题 : 输入  hexo  d   无反应</h4><a id="more"></a><h4 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h4><p>1.打开 _ config.yml   文件</p><p>​    deploy 下按照下图输入，repo 填写自己的 github 仓库地址</p><p><img src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925143002.png" alt="20170925143002"></p><p>2.输入</p><p>$npm install hexo-deployer-git  -save</p><p><img src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925142942.png" alt="20170925142942"></p><p>3.输入  hexo   d    </p><h5 id="工具推荐："><a href="#工具推荐：" class="headerlink" title="工具推荐："></a>工具推荐：</h5><p><a href=" http://owtr286kv.bkt.clouddn.com/software%E5%8F%96%E8%89%B2%E5%B7%A5%E5%85%B7.exe" target="_blank" rel="external">        取色软件下载</a></p>]]></content>
     
     <summary type="html">
     
