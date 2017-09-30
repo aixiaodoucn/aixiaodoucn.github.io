@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>ZS&#39;Blog</title>
+  <title>ZShuai&#39;Blog</title>
   
-  <subtitle>ZsZsZsZsZsZsZsZsZs</subtitle>
+  <subtitle>不做下一个谁，做第一个自己。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>zs</name>
+    <name>赵帅</name>
     
   </author>
   
