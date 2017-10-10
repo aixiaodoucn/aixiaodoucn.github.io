@@ -3,11 +3,26 @@
 
 
     
-    
+  <url>
+    <loc>http://yoursite.com/2017/10/10/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2017-10-10T02:11:05.371Z</lastmod>
+    <data>
+        <display>
+        <title>hexo常用命令</title>
+        <pubTime>2017-10-10T01:44:25.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
     
   <url>
     <loc>http://yoursite.com/2017/09/25/hexo-d-%E6%97%A0%E5%8F%8D%E5%BA%94/</loc>
-    <lastmod>2017-09-25T08:13:41.383Z</lastmod>
+    <lastmod>2017-10-10T01:52:58.786Z</lastmod>
     <data>
         <display>
         <title>hexo d 无反应</title>
@@ -21,6 +36,8 @@
     </data>
     </url>
 
+    
+    
     
   <url>
     <loc>http://yoursite.com/2017/09/19/hello-world/</loc>

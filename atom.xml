@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-25T08:13:41.383Z</updated>
+  <updated>2017-10-10T02:11:05.371Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,17 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hexo常用命令</title>
+    <link href="http://yoursite.com/2017/10/10/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2017/10/10/hexo常用命令/</id>
+    <published>2017-10-10T01:44:25.000Z</published>
+    <updated>2017-10-10T02:11:05.371Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install hexo -g  #安装  </div><div class="line">npm update  hexo -g  #升级  </div><div class="line">hexo init  #初始化</div></pre></td></tr></table></figure><h2 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h2><p><code>hexo n &quot;我的博客&quot;</code> == <code>hexo new &quot;我的博客&quot;</code>         #新建文章<br><code>hexo p</code> == <code>hexo publish</code><br><code>hexo g</code> == <code>hexo generate</code>                        #生成<br><code>hexo s</code> == <code>hexo server</code>                          #启动服务预览<br><code>hexo d</code> == <code>hexo deploy</code>                           #部署</p><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><p><code>hexo server</code>             #Hexo 会监视文件变动并自动更新，您无须重启服务器。<br><code>hexo server -s</code>             #静态模式<br><code>hexo server -p 5000</code>     #更改端口<br><code>hexo server -i 192.168.1.1</code> #自定义 IP</p><p><code>hexo clean</code>                #清除缓存 网页正常情况下可以忽略此条命令<br><code>hexo g</code>                     #生成静态网页<br><code>hexo d</code>                     #开始部署</p><h2 id="监视文件变动"><a href="#监视文件变动" class="headerlink" title="监视文件变动"></a>监视文件变动</h2><p><code>hexo generate</code>             #使用 Hexo 生成静态文件快速而且简单<br><code>hexo generate --watch</code>     #监视文件变动</p><h2 id="完成后部署"><a href="#完成后部署" class="headerlink" title="完成后部署"></a>完成后部署</h2><blockquote><p>两个命令的作用是相同的<br><code>hexo generate --deploy</code><br><code>hexo deploy --generate</code></p></blockquote><h2 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h2><p><code>hexo new &quot;postName&quot;</code>         #新建文章<br><code>hexo new page &quot;pageName&quot;</code>     #新建页面<br><code>hexo generate</code>                 #生成静态页面至public目录<br><code>hexo server</code>                    #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br><code>hexo deploy</code>                 #将.deploy目录部署到GitHub</p><p><code>hexo new [layout] &lt;title&gt;</code><br><code>hexo new photo &quot;My Gallery&quot;</code><br><code>hexo new &quot;Hello World&quot; --lang tw</code></p><h2 id="设置文章摘要"><a href="#设置文章摘要" class="headerlink" title="设置文章摘要"></a>设置文章摘要</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">以上是文章摘要 &lt;!--more--&gt; 以下是余下全文</div></pre></td></tr></table></figure><h2 id="推送到服务器上"><a href="#推送到服务器上" class="headerlink" title="推送到服务器上"></a>推送到服务器上</h2><p><code>hexo n</code>         #写文章<br><code>hexo g</code>         #生成<br><code>hexo d</code>         #部署      #可与<code>hexo g</code>合并为 <code>hexo d -g</code></p>]]></content>
+    
+    <summary type="html">
+    
+      hexo 常用命令
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo d 无反应</title>
     <link href="http://yoursite.com/2017/09/25/hexo-d-%E6%97%A0%E5%8F%8D%E5%BA%94/"/>
     <id>http://yoursite.com/2017/09/25/hexo-d-无反应/</id>
     <published>2017-09-25T06:31:48.000Z</published>
-    <updated>2017-09-25T08:13:41.383Z</updated>
+    <updated>2017-10-10T01:52:58.786Z</updated>
     
     <content type="html"><![CDATA[<h4 id="问题-输入-hexo-d-无反应"><a href="#问题-输入-hexo-d-无反应" class="headerlink" title="问题 : 输入  hexo  d   无反应"></a>问题 : 输入  hexo  d   无反应</h4><a id="more"></a><h4 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h4><p>1.打开 _ config.yml   文件</p><p>​    deploy 下按照下图输入，repo 填写自己的 github 仓库地址</p><p><img src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925143002.png" alt="20170925143002"></p><p>2.输入</p><p>$npm install hexo-deployer-git  -save</p><p><img src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925142942.png" alt="20170925142942"></p><p>3.输入  hexo   d    </p><h5 id="工具推荐："><a href="#工具推荐：" class="headerlink" title="工具推荐："></a>工具推荐：</h5><p><a href=" http://owtr286kv.bkt.clouddn.com/software%E5%8F%96%E8%89%B2%E5%B7%A5%E5%85%B7.exe" target="_blank" rel="external">        取色软件下载</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;问题-输入-hexo-d-无反应&quot;&gt;&lt;a href=&quot;#问题-输入-hexo-d-无反应&quot; class=&quot;headerlink&quot; title=&quot;问题 : 输入  hexo  d   无反应&quot;&gt;&lt;/a&gt;问题 : 输入  hexo  d   无反应&lt;/h4&gt;
+      输入 hexo d 后无反应的解决方法
     
     </summary>
     
