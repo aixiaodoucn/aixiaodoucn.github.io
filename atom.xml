@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-10-10T02:11:05.371Z</updated>
+  <updated>2017-10-13T09:08:58.087Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>QQ原创表情提取方法</title>
+    <link href="http://yoursite.com/2017/10/13/QQ%E5%8E%9F%E5%88%9B%E8%A1%A8%E6%83%85%E6%8F%90%E5%8F%96%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2017/10/13/QQ原创表情提取方法/</id>
+    <published>2017-10-13T08:43:31.000Z</published>
+    <updated>2017-10-13T09:08:58.087Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文有两种方法</p><a id="more"></a><h1 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h1><h5 id="1-首先将表情发给好友"><a href="#1-首先将表情发给好友" class="headerlink" title="1.首先将表情发给好友"></a>1.首先将表情发给好友</h5><p><img src="http://oxr7zh5lu.bkt.clouddn.com/qqbiaoqing1.png" alt=""></p><h5 id="2-鼠标右键选择举报此表情"><a href="#2-鼠标右键选择举报此表情" class="headerlink" title="2.鼠标右键选择举报此表情"></a>2.鼠标右键选择举报此表情</h5><p><img src="http://oxr7zh5lu.bkt.clouddn.com/qqbiaoqing2.png" alt=""></p><h5 id="3-按住鼠标左键，将表情拖拽到桌面"><a href="#3-按住鼠标左键，将表情拖拽到桌面" class="headerlink" title="3.按住鼠标左键，将表情拖拽到桌面,"></a>3.按住鼠标左键，将表情拖拽到桌面,</h5><p><img src="http://oxr7zh5lu.bkt.clouddn.com/qqbiaoqing3.png" alt=""></p><p>显示为html的文件</p><p><img src="http://oxr7zh5lu.bkt.clouddn.com/qqbiaoqing4.png" alt=""></p><h5 id="4-将文件重命名为-1-gif"><a href="#4-将文件重命名为-1-gif" class="headerlink" title="4.将文件重命名为 1.gif"></a>4.将文件重命名为 1.gif</h5><p><img src="http://oxr7zh5lu.bkt.clouddn.com/qqbiaoqing5.png" alt=""></p><h5 id="5-结果如下"><a href="#5-结果如下" class="headerlink" title="5.结果如下"></a>5.结果如下</h5><p><img src="http://oxr7zh5lu.bkt.clouddn.com/qqbiaoqing1.gif" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文有两种方法&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="QQ" scheme="http://yoursite.com/tags/QQ/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo常用命令</title>
