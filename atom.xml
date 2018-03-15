@@ -5,9 +5,9 @@
   <subtitle>不做下一个谁，做第一个自己。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://foryh.com/"/>
   <updated>2017-10-16T02:27:21.178Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://foryh.com/</id>
   
   <author>
     <name>赵帅</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>QQ原创表情提取方法</title>
-    <link href="http://yoursite.com/2017/10/13/QQ%E5%8E%9F%E5%88%9B%E8%A1%A8%E6%83%85%E6%8F%90%E5%8F%96%E6%96%B9%E6%B3%95/"/>
-    <id>http://yoursite.com/2017/10/13/QQ原创表情提取方法/</id>
+    <link href="http://foryh.com/2017/10/13/QQ%E5%8E%9F%E5%88%9B%E8%A1%A8%E6%83%85%E6%8F%90%E5%8F%96%E6%96%B9%E6%B3%95/"/>
+    <id>http://foryh.com/2017/10/13/QQ原创表情提取方法/</id>
     <published>2017-10-13T08:43:31.000Z</published>
     <updated>2017-10-16T02:27:21.178Z</updated>
     
@@ -32,14 +32,14 @@
     </summary>
     
     
-      <category term="QQ" scheme="http://yoursite.com/tags/QQ/"/>
+      <category term="QQ" scheme="http://foryh.com/tags/QQ/"/>
     
   </entry>
   
   <entry>
     <title>hexo常用命令</title>
-    <link href="http://yoursite.com/2017/10/10/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>http://yoursite.com/2017/10/10/hexo常用命令/</id>
+    <link href="http://foryh.com/2017/10/10/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://foryh.com/2017/10/10/hexo常用命令/</id>
     <published>2017-10-10T01:44:25.000Z</published>
     <updated>2017-10-30T02:08:58.667Z</updated>
     
@@ -52,14 +52,14 @@
     </summary>
     
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://foryh.com/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>hexo d 无反应</title>
-    <link href="http://yoursite.com/2017/09/25/hexo-d-%E6%97%A0%E5%8F%8D%E5%BA%94/"/>
-    <id>http://yoursite.com/2017/09/25/hexo-d-无反应/</id>
+    <link href="http://foryh.com/2017/09/25/hexo-d-%E6%97%A0%E5%8F%8D%E5%BA%94/"/>
+    <id>http://foryh.com/2017/09/25/hexo-d-无反应/</id>
     <published>2017-09-25T06:31:48.000Z</published>
     <updated>2017-10-10T01:52:58.786Z</updated>
     
@@ -72,14 +72,14 @@
     </summary>
     
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+      <category term="hexo" scheme="http://foryh.com/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2017/09/19/hello-world/"/>
-    <id>http://yoursite.com/2017/09/19/hello-world/</id>
+    <link href="http://foryh.com/2017/09/19/hello-world/"/>
+    <id>http://foryh.com/2017/09/19/hello-world/</id>
     <published>2017-09-19T08:26:06.048Z</published>
     <updated>2017-09-19T08:26:06.048Z</updated>
     
