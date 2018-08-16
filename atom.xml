@@ -159,4 +159,24 @@
     
   </entry>
   
+  <entry>
+    <title>echarts 基本配置项记录</title>
+    <link href="http://foryh.com/2017/09/25/echarts%20%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E9%A1%B9%E8%AE%B0%E5%BD%95/"/>
+    <id>http://foryh.com/2017/09/25/echarts 基本配置项记录/</id>
+    <published>2017-09-25T06:31:48.000Z</published>
+    <updated>2018-08-16T06:19:43.691Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//图表自适应宽高</div><div class="line">window.onresize = function()&#123;</div><div class="line">    myChart.resize();</div><div class="line">&#125;;</div></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//title主标题</div><div class="line">title:&#123;</div><div class="line">show:true,</div><div class="line">text:&apos;标题&apos;,</div><div class="line">link:&apos;www.baidu.com&apos;,//主标题文本超链接</div><div class="line">textStyle:&#123;</div><div class="line">color:&apos;#333&apos;,</div><div class="line">fontSize:18,</div><div class="line">align:&apos;left&apos;,//文字水平对齐方式，默认自动。 left center right</div><div class="line">verticalAlign:&apos;top&apos;//文字垂直对齐方式，默认自动。 top middle bottom</div><div class="line">&#125;,</div><div class="line">subtext:&apos;副标题&apos;,//支持使用 \n 换行。</div><div class="line">sublink:&apos;超链接&apos;,//副标题超文本链接</div><div class="line">padding:5,//内边距 5 /上下5左右10 padding:[5,10] /padding:[5,10,5,10] 上右下左</div><div class="line">&#125;</div></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//图例组件</div><div class="line">legend: &#123;</div><div class="line">show:true,</div><div class="line">data:[&apos;数据1&apos;, &apos;数据2&apos;, &apos;数据3&apos;],</div><div class="line">right:&apos;5%&apos;,//位置离右侧距离 也可px  left/top/bottom</div><div class="line">orient:&apos;visualMap&apos;,//图例列表的布局朝向.纵向  横向orient:&apos;horizontal&apos;</div><div class="line">align:&apos;left&apos;,//图例标记和文本的对齐   左右位置</div><div class="line">&#125;,</div></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//xAxis  X轴</div><div class="line">xAxis:&#123;</div><div class="line">show:true,//是否显示</div><div class="line">position:bottom,//x轴位置 top/bottom</div><div class="line">nameLocation:&apos;end&apos;,//坐标轴名称显示位置start/end/middle/center</div><div class="line">nameTextStyle:&#123;</div><div class="line">color:&apos;&apos;,</div><div class="line">fontFamily:&apos;&apos;,</div><div class="line">fontSize:12,</div><div class="line">align:&apos;left&apos;//坐标轴名称文字水平对齐方式</div><div class="line">&#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//textStyle  全局的字体样式</div><div class="line">textStyle:&#123;</div><div class="line">color:&apos;#fff&apos;,</div><div class="line">fontFamily:&apos;宋体&apos;,</div><div class="line">fontsize:12</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      echarts 基本配置项记录
+    
+    </summary>
+    
+    
+      <category term="echarts" scheme="http://foryh.com/tags/echarts/"/>
+    
+  </entry>
+  
 </feed>
