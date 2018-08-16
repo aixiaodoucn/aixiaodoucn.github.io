@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://foryh.com/"/>
-  <updated>2017-09-19T08:26:06.049Z</updated>
+  <updated>2018-08-16T01:40:41.272Z</updated>
   <id>http://foryh.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js计时器秒表功能</title>
+    <link href="http://foryh.com/2018/08/16/js%E8%AE%A1%E6%97%B6%E5%99%A8%E7%A7%92%E8%A1%A8%E5%8A%9F%E8%83%BD/"/>
+    <id>http://foryh.com/2018/08/16/js计时器秒表功能/</id>
+    <published>2018-08-16T02:00:00.000Z</published>
+    <updated>2018-08-16T01:40:41.272Z</updated>
+    
+    <content type="html"><![CDATA[<p>js计时器秒表功能<br>开始/暂停/重置</p><hr><h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;text&quot; id=&quot;timetext&quot; value=&quot;00:00:00&quot; readonly&gt;</div><div class="line"> &lt;button type=&quot;button&quot; onclick=&quot;start()&quot;&gt;开始&lt;/button&gt; </div><div class="line"> &lt;button type=&quot;button&quot; onclick=&quot;stop()&quot;&gt;暂停&lt;/button&gt; </div><div class="line"> &lt;button type=&quot;button&quot; onclick=&quot;Reset()&quot;&gt;重置&lt;/button&gt;</div></pre></td></tr></table></figure><h2 id="Script"><a href="#Script" class="headerlink" title="Script"></a>Script</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    var hour,minute,second;//时 分 秒</div><div class="line">    hour=minute=second=0;//初始化</div><div class="line">    var millisecond=0;//毫秒</div><div class="line">    var int;</div><div class="line">    function Reset()//重置</div><div class="line">    &#123;</div><div class="line">      window.clearInterval(int);</div><div class="line">      millisecond=hour=minute=second=0;</div><div class="line">      document.getElementById(&apos;timetext&apos;).value=&apos;00:00:00:000&apos;;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    function start()//开始</div><div class="line">    &#123;</div><div class="line">      int=setInterval(timer,50);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    function timer()//计时</div><div class="line">    &#123;</div><div class="line">      millisecond=millisecond+50;</div><div class="line">      if(millisecond&gt;=1000)</div><div class="line">      &#123;</div><div class="line">        millisecond=0;</div><div class="line">        second=second+1;</div><div class="line">      &#125;</div><div class="line">      if(second&gt;=60)</div><div class="line">      &#123;</div><div class="line">        second=0;</div><div class="line">        minute=minute+1;</div><div class="line">      &#125;</div><div class="line"> </div><div class="line">      if(minute&gt;=60)</div><div class="line">      &#123;</div><div class="line">        minute=0;</div><div class="line">        hour=hour+1;</div><div class="line">      &#125;</div><div class="line">      document.getElementById(&apos;timetext&apos;).value=toDub(hour)+&apos;:&apos;+toDub(minute)+&apos;:&apos;+toDub(second);</div><div class="line"> </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function stop()//暂停</div><div class="line">    &#123;</div><div class="line">      window.clearInterval(int);</div><div class="line">    &#125;</div><div class="line">    //补零</div><div class="line">    function toDub(n)&#123;</div><div class="line">        return n&lt;10?&quot;0&quot;+n:&quot;&quot;+n;</div><div class="line">    &#125;</div><div class="line">  &lt;/script&gt;</div></pre></td></tr></table></figure><p><a href="www.foryh.com">www.foryh.com</a></p><hr><hr>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;js计时器秒表功能&lt;br&gt;开始/暂停/重置&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;HTML&quot;&gt;&lt;a href=&quot;#HTML&quot; class=&quot;headerlink&quot; title=&quot;HTML&quot;&gt;&lt;/a&gt;HTML&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://foryh.com/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
