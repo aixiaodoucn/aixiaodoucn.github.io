@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://foryh.com/"/>
-  <updated>2018-08-16T01:40:41.272Z</updated>
+  <updated>2018-08-30T07:31:30.821Z</updated>
   <id>http://foryh.com/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浏览器网页超链接打开本地exe程序的方法</title>
+    <link href="http://foryh.com/2018/08/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BD%91%E9%A1%B5%E9%93%BE%E6%8E%A5%E6%89%93%E5%BC%80%E6%9C%AC%E5%9C%B0exe%E7%A8%8B%E5%BA%8F/"/>
+    <id>http://foryh.com/2018/08/29/浏览器网页链接打开本地exe程序/</id>
+    <published>2018-08-29T06:04:26.708Z</published>
+    <updated>2018-08-30T07:31:30.821Z</updated>
+    
+    <content type="html"><![CDATA[<p>浏览器网页超链接打开本地exe程序的方法<br>通过加注册表的方式（和打开QQ一样）<br><a id="more"></a></p><h2 id="一-、加注册表"><a href="#一-、加注册表" class="headerlink" title="一 、加注册表"></a>一 、加注册表</h2><p>新建 aclient.reg 文件，加入以下代码，双击运行aclient.reg，就会将以下信息加到注册表中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Windows Registry Editor Version 5.00</div><div class="line"></div><div class="line">[HKEY_CLASSES_ROOT\aClient]</div><div class="line"></div><div class="line">@=&quot;aClientProtocol&quot;</div><div class="line"></div><div class="line">&quot;URL Protocol&quot;=&quot;&quot;</div><div class="line"> </div><div class="line">[HKEY_CLASSES_ROOT\aClient\DefaultIcon]</div><div class="line"> </div><div class="line">[HKEY_CLASSES_ROOT\aClient\shell]</div><div class="line"> </div><div class="line">[HKEY_CLASSES_ROOT\aClient\shell\open]</div><div class="line"> </div><div class="line">[HKEY_CLASSES_ROOT\aClient\shell\open\command]</div><div class="line"></div><div class="line">@=&quot;\&quot;D:\\Nwt\\shiyeline.exe\&quot;\&quot;%1\&quot;&quot;</div></pre></td></tr></table></figure></p><h2 id="二、-HTML页面引用链接"><a href="#二、-HTML页面引用链接" class="headerlink" title="二、 HTML页面引用链接"></a>二、 HTML页面引用链接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;aClient://&quot;&gt;打开程序&lt;/a&gt;</div></pre></td></tr></table></figure><p>打开样式：<br><img src="https://img-blog.csdn.net/20180829140006963?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNDQyOTY3/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="样式"></p><p>备注：<br>    弹窗中的”ShiYeLine.exe” ，应该是exe中属性的描述信息。</p><p><a href="www.foryh.com">www.foryh.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;浏览器网页超链接打开本地exe程序的方法&lt;br&gt;通过加注册表的方式（和打开QQ一样）&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>js计时器秒表功能</title>
