@@ -4,31 +4,14 @@
 
     
   <url>
-    <loc>http://foryh.com/2018/09/03/%E9%94%9A%E7%82%B9%E5%90%91%E4%B8%8B%E5%81%8F%E7%A7%BB%EF%BC%8C%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A1%B6%E9%83%A8%E9%9D%A0%E4%B8%8B%E6%98%BE%E7%A4%BA/</loc>
-    <lastmod>2018-09-04T01:11:45.418Z</lastmod>
-    <data>
-        <display>
-        <title>锚点向下偏移</title>
-        <pubTime>2018-09-03T02:31:48.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://foryh.com/2018/09/03/jQuery%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/</loc>
-    <lastmod>2018-09-04T01:10:54.925Z</lastmod>
+    <lastmod>2018-09-04T01:14:49.500Z</lastmod>
     <data>
         <display>
         <title>jQuery数字滚动效果</title>
         <pubTime>2018-09-03T02:31:48.000Z</pubTime>
         
-        <tag>hexo</tag>
+        <tag>jQuery</tag>
          
          
            
@@ -38,13 +21,32 @@
 
     
   <url>
-    <loc>http://foryh.com/2018/08/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BD%91%E9%A1%B5%E9%93%BE%E6%8E%A5%E6%89%93%E5%BC%80%E6%9C%AC%E5%9C%B0exe%E7%A8%8B%E5%BA%8F/</loc>
-    <lastmod>2018-08-30T07:31:30.821Z</lastmod>
+    <loc>http://foryh.com/2018/09/03/%E9%94%9A%E7%82%B9%E5%90%91%E4%B8%8B%E5%81%8F%E7%A7%BB%EF%BC%8C%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A1%B6%E9%83%A8%E9%9D%A0%E4%B8%8B%E6%98%BE%E7%A4%BA/</loc>
+    <lastmod>2018-09-04T01:14:34.456Z</lastmod>
+    <data>
+        <display>
+        <title>锚点向下偏移</title>
+        <pubTime>2018-09-03T02:31:48.000Z</pubTime>
+        
+        <tag>web</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://foryh.com/2018/09/01/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BD%91%E9%A1%B5%E9%93%BE%E6%8E%A5%E6%89%93%E5%BC%80%E6%9C%AC%E5%9C%B0exe%E7%A8%8B%E5%BA%8F/</loc>
+    <lastmod>2018-09-04T01:14:19.186Z</lastmod>
     <data>
         <display>
         <title>浏览器网页超链接打开本地exe程序的方法</title>
-        <pubTime>2018-08-29T06:04:26.708Z</pubTime>
+        <pubTime>2018-09-01T03:31:48.000Z</pubTime>
         
+        <tag>web</tag>
+         
          
            
         </display>
