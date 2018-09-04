@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://foryh.com/"/>
-  <updated>2018-08-30T07:31:30.821Z</updated>
+  <updated>2018-09-04T01:10:54.925Z</updated>
   <id>http://foryh.com/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jQuery数字滚动效果</title>
+    <link href="http://foryh.com/2018/09/03/jQuery%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/"/>
+    <id>http://foryh.com/2018/09/03/jQuery数字滚动效果/</id>
+    <published>2018-09-03T02:31:48.000Z</published>
+    <updated>2018-09-04T01:10:54.925Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="jQuery数字滚动效果"><a href="#jQuery数字滚动效果" class="headerlink" title="jQuery数字滚动效果"></a>jQuery数字滚动效果</h2><p>引入jQuery</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;js/jquery.min.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure><p>body</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;div id=&quot;count&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure><p>js</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$(function()&#123;</div><div class="line">$(&quot;#count&quot;).numberRock(&#123;</div><div class="line">lastNumber:666,//终止数字</div><div class="line">duration:800,</div><div class="line">easing:&apos;swing&apos;,  //慢快慢</div><div class="line">&#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">(function($)&#123;</div><div class="line">    $.fn.numberRock=function(options)&#123;</div><div class="line">        var defaults=&#123;</div><div class="line">            lastNumber:100,</div><div class="line">            duration:2000,</div><div class="line">            easing:&apos;swing&apos;  //swing(默认 : 缓冲 : 慢快慢)  linear(匀速的)</div><div class="line">        &#125;;</div><div class="line">        var opts=$.extend(&#123;&#125;, defaults, options);</div><div class="line"></div><div class="line">        $(this).animate(&#123;</div><div class="line">            num : &quot;numberRock&quot;,</div><div class="line">        &#125;,&#123;</div><div class="line">            duration : opts.duration,</div><div class="line">            easing : opts.easing,</div><div class="line">            complete : function()&#123;</div><div class="line">                console.log(&quot;success&quot;);</div><div class="line">            &#125;,</div><div class="line">            step : function(a,b)&#123;  //可以检测我们定时器的每一次变化</div><div class="line">                $(this).html(parseInt(b.pos * opts.lastNumber));</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure><hr><p><a href="http://www.foryh.com" target="_blank" rel="external">www.foryh.com</a></p><hr>]]></content>
+    
+    <summary type="html">
+    
+      jQuery实现数字滚动效果
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://foryh.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>锚点向下偏移</title>
+    <link href="http://foryh.com/2018/09/03/%E9%94%9A%E7%82%B9%E5%90%91%E4%B8%8B%E5%81%8F%E7%A7%BB%EF%BC%8C%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A1%B6%E9%83%A8%E9%9D%A0%E4%B8%8B%E6%98%BE%E7%A4%BA/"/>
+    <id>http://foryh.com/2018/09/03/锚点向下偏移，在浏览器顶部靠下显示/</id>
+    <published>2018-09-03T02:31:48.000Z</published>
+    <updated>2018-09-04T01:11:45.418Z</updated>
+    
+    <content type="html"><![CDATA[<p>//锚点向下偏移<br>点击a链接后，含有锚点的div显示位置，距离浏览器顶部的间距<br><a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&apos;a[href^=#][href!=#]&apos;).click(function () &#123;</div><div class="line">    var target = document.getElementById(this.hash.slice(1));</div><div class="line">    if (!target) return;</div><div class="line">    var targetOffset = $(target).offset().top - 120;       //120为离浏览器顶部的距离</div><div class="line">    $(&apos;html,body&apos;).animate(&#123;scrollTop: targetOffset&#125;, 400);</div><div class="line">    return false;</div><div class="line">&#125;);</div></pre></td></tr></table></figure><hr><p><a href="http://www.foryh.com" target="_blank" rel="external">www.foryh.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      点击a链接后，含有锚点的div显示位置，距离浏览器顶部的间距
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://foryh.com/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>浏览器网页超链接打开本地exe程序的方法</title>
@@ -158,26 +198,6 @@
   </entry>
   
   <entry>
-    <title>hexo d 无反应</title>
-    <link href="http://foryh.com/2017/09/25/hexo-d-%E6%97%A0%E5%8F%8D%E5%BA%94/"/>
-    <id>http://foryh.com/2017/09/25/hexo-d-无反应/</id>
-    <published>2017-09-25T06:31:48.000Z</published>
-    <updated>2018-08-16T06:19:31.914Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="问题-输入-hexo-d-无反应"><a href="#问题-输入-hexo-d-无反应" class="headerlink" title="问题 : 输入  hexo  d   无反应"></a>问题 : 输入  hexo  d   无反应</h4><a id="more"></a><h4 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h4><p>1.打开 _ config.yml   文件</p><p>​    deploy 下按照下图输入，repo 填写自己的 github 仓库地址</p><p><img src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925143002.png" alt="20170925143002"></p><p>2.输入</p><p>$npm install hexo-deployer-git  -save</p><p><img src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925142942.png" alt="20170925142942"></p><p>3.输入  hexo   d    </p><h5 id="工具推荐："><a href="#工具推荐：" class="headerlink" title="工具推荐："></a>工具推荐：</h5><p><a href=" http://owtr286kv.bkt.clouddn.com/software%E5%8F%96%E8%89%B2%E5%B7%A5%E5%85%B7.exe" target="_blank" rel="external">        取色软件下载</a></p>]]></content>
-    
-    <summary type="html">
-    
-      输入 hexo d 后无反应的解决方法
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://foryh.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
     <title>echarts 基本配置项记录</title>
     <link href="http://foryh.com/2017/09/25/echarts%20%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E9%A1%B9%E8%AE%B0%E5%BD%95/"/>
     <id>http://foryh.com/2017/09/25/echarts 基本配置项记录/</id>
@@ -194,6 +214,26 @@
     
     
       <category term="echarts" scheme="http://foryh.com/tags/echarts/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo d 无反应</title>
+    <link href="http://foryh.com/2017/09/25/hexo-d-%E6%97%A0%E5%8F%8D%E5%BA%94/"/>
+    <id>http://foryh.com/2017/09/25/hexo-d-无反应/</id>
+    <published>2017-09-25T06:31:48.000Z</published>
+    <updated>2018-08-16T06:19:31.914Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="问题-输入-hexo-d-无反应"><a href="#问题-输入-hexo-d-无反应" class="headerlink" title="问题 : 输入  hexo  d   无反应"></a>问题 : 输入  hexo  d   无反应</h4><a id="more"></a><h4 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h4><p>1.打开 _ config.yml   文件</p><p>​    deploy 下按照下图输入，repo 填写自己的 github 仓库地址</p><p><img src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925143002.png" alt="20170925143002"></p><p>2.输入</p><p>$npm install hexo-deployer-git  -save</p><p><img src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925142942.png" alt="20170925142942"></p><p>3.输入  hexo   d    </p><h5 id="工具推荐："><a href="#工具推荐：" class="headerlink" title="工具推荐："></a>工具推荐：</h5><p><a href=" http://owtr286kv.bkt.clouddn.com/software%E5%8F%96%E8%89%B2%E5%B7%A5%E5%85%B7.exe" target="_blank" rel="external">        取色软件下载</a></p>]]></content>
+    
+    <summary type="html">
+    
+      输入 hexo d 后无反应的解决方法
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://foryh.com/tags/hexo/"/>
     
   </entry>
   
