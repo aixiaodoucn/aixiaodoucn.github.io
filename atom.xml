@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://foryh.com/"/>
-  <updated>2018-09-04T01:14:34.456Z</updated>
+  <updated>2018-09-04T01:14:49.500Z</updated>
   <id>http://foryh.com/</id>
   
   <author>
@@ -15,26 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>锚点向下偏移</title>
-    <link href="http://foryh.com/2018/09/03/%E9%94%9A%E7%82%B9%E5%90%91%E4%B8%8B%E5%81%8F%E7%A7%BB%EF%BC%8C%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A1%B6%E9%83%A8%E9%9D%A0%E4%B8%8B%E6%98%BE%E7%A4%BA/"/>
-    <id>http://foryh.com/2018/09/03/锚点向下偏移，在浏览器顶部靠下显示/</id>
-    <published>2018-09-03T02:31:48.000Z</published>
-    <updated>2018-09-04T01:14:34.456Z</updated>
-    
-    <content type="html"><![CDATA[<p>//锚点向下偏移<br>点击a链接后，含有锚点的div显示位置，距离浏览器顶部的间距<br><a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&apos;a[href^=#][href!=#]&apos;).click(function () &#123;</div><div class="line">    var target = document.getElementById(this.hash.slice(1));</div><div class="line">    if (!target) return;</div><div class="line">    var targetOffset = $(target).offset().top - 120;       //120为离浏览器顶部的距离</div><div class="line">    $(&apos;html,body&apos;).animate(&#123;scrollTop: targetOffset&#125;, 400);</div><div class="line">    return false;</div><div class="line">&#125;);</div></pre></td></tr></table></figure><hr><p><a href="http://www.foryh.com" target="_blank" rel="external">www.foryh.com</a></p>]]></content>
-    
-    <summary type="html">
-    
-      点击a链接后，含有锚点的div显示位置，距离浏览器顶部的间距
-    
-    </summary>
-    
-    
-      <category term="web" scheme="http://foryh.com/tags/web/"/>
-    
-  </entry>
   
   <entry>
     <title>jQuery数字滚动效果</title>
@@ -53,6 +33,26 @@
     
     
       <category term="jQuery" scheme="http://foryh.com/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>锚点向下偏移</title>
+    <link href="http://foryh.com/2018/09/03/%E9%94%9A%E7%82%B9%E5%90%91%E4%B8%8B%E5%81%8F%E7%A7%BB%EF%BC%8C%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E9%A1%B6%E9%83%A8%E9%9D%A0%E4%B8%8B%E6%98%BE%E7%A4%BA/"/>
+    <id>http://foryh.com/2018/09/03/锚点向下偏移，在浏览器顶部靠下显示/</id>
+    <published>2018-09-03T02:31:48.000Z</published>
+    <updated>2018-09-04T01:14:34.456Z</updated>
+    
+    <content type="html"><![CDATA[<p>//锚点向下偏移<br>点击a链接后，含有锚点的div显示位置，距离浏览器顶部的间距<br><a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&apos;a[href^=#][href!=#]&apos;).click(function () &#123;</div><div class="line">    var target = document.getElementById(this.hash.slice(1));</div><div class="line">    if (!target) return;</div><div class="line">    var targetOffset = $(target).offset().top - 120;       //120为离浏览器顶部的距离</div><div class="line">    $(&apos;html,body&apos;).animate(&#123;scrollTop: targetOffset&#125;, 400);</div><div class="line">    return false;</div><div class="line">&#125;);</div></pre></td></tr></table></figure><hr><p><a href="http://www.foryh.com" target="_blank" rel="external">www.foryh.com</a></p>]]></content>
+    
+    <summary type="html">
+    
+      点击a链接后，含有锚点的div显示位置，距离浏览器顶部的间距
+    
+    </summary>
+    
+    
+      <category term="web" scheme="http://foryh.com/tags/web/"/>
     
   </entry>
   

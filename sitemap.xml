@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://foryh.com/download/index.html</loc>
+    
+    <lastmod>2018-09-11T06:25:17.217Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://foryh.com/2018/09/03/jQuery%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/</loc>
     
     <lastmod>2018-09-04T01:14:49.500Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://foryh.com/2018/08/16/js%E8%AE%A1%E6%97%B6%E5%99%A8%E7%A7%92%E8%A1%A8%E5%8A%9F%E8%83%BD/</loc>
     
     <lastmod>2018-08-16T01:40:41.272Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://foryh.com/download/index.html</loc>
-    
-    <lastmod>2018-08-15T14:21:24.496Z</lastmod>
     
   </url>
   
