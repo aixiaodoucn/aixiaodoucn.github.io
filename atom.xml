@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://foryh.com/"/>
-  <updated>2018-09-04T01:14:49.500Z</updated>
+  <updated>2018-09-04T01:14:34.456Z</updated>
   <id>http://foryh.com/</id>
   
   <author>
@@ -15,26 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>jQuery数字滚动效果</title>
-    <link href="http://foryh.com/2018/09/03/jQuery%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/"/>
-    <id>http://foryh.com/2018/09/03/jQuery数字滚动效果/</id>
-    <published>2018-09-03T02:31:48.000Z</published>
-    <updated>2018-09-04T01:14:49.500Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="jQuery数字滚动效果"><a href="#jQuery数字滚动效果" class="headerlink" title="jQuery数字滚动效果"></a>jQuery数字滚动效果</h2><p>引入jQuery</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;js/jquery.min.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure><p>body</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;div id=&quot;count&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure><p>js</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$(function()&#123;</div><div class="line">$(&quot;#count&quot;).numberRock(&#123;</div><div class="line">lastNumber:666,//终止数字</div><div class="line">duration:800,</div><div class="line">easing:&apos;swing&apos;,  //慢快慢</div><div class="line">&#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">(function($)&#123;</div><div class="line">    $.fn.numberRock=function(options)&#123;</div><div class="line">        var defaults=&#123;</div><div class="line">            lastNumber:100,</div><div class="line">            duration:2000,</div><div class="line">            easing:&apos;swing&apos;  //swing(默认 : 缓冲 : 慢快慢)  linear(匀速的)</div><div class="line">        &#125;;</div><div class="line">        var opts=$.extend(&#123;&#125;, defaults, options);</div><div class="line"></div><div class="line">        $(this).animate(&#123;</div><div class="line">            num : &quot;numberRock&quot;,</div><div class="line">        &#125;,&#123;</div><div class="line">            duration : opts.duration,</div><div class="line">            easing : opts.easing,</div><div class="line">            complete : function()&#123;</div><div class="line">                console.log(&quot;success&quot;);</div><div class="line">            &#125;,</div><div class="line">            step : function(a,b)&#123;  //可以检测我们定时器的每一次变化</div><div class="line">                $(this).html(parseInt(b.pos * opts.lastNumber));</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure><hr><p><a href="http://www.foryh.com" target="_blank" rel="external">www.foryh.com</a></p><hr>]]></content>
-    
-    <summary type="html">
-    
-      jQuery实现数字滚动效果
-    
-    </summary>
-    
-    
-      <category term="jQuery" scheme="http://foryh.com/tags/jQuery/"/>
-    
-  </entry>
   
   <entry>
     <title>锚点向下偏移</title>
@@ -53,6 +33,26 @@
     
     
       <category term="web" scheme="http://foryh.com/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery数字滚动效果</title>
+    <link href="http://foryh.com/2018/09/03/jQuery%E6%95%B0%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/"/>
+    <id>http://foryh.com/2018/09/03/jQuery数字滚动效果/</id>
+    <published>2018-09-03T02:31:48.000Z</published>
+    <updated>2018-09-04T01:14:49.500Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="jQuery数字滚动效果"><a href="#jQuery数字滚动效果" class="headerlink" title="jQuery数字滚动效果"></a>jQuery数字滚动效果</h2><p>引入jQuery</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;js/jquery.min.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure><p>body</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;div id=&quot;count&quot;&gt;&lt;/div&gt;</div></pre></td></tr></table></figure><p>js</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$(function()&#123;</div><div class="line">$(&quot;#count&quot;).numberRock(&#123;</div><div class="line">lastNumber:666,//终止数字</div><div class="line">duration:800,</div><div class="line">easing:&apos;swing&apos;,  //慢快慢</div><div class="line">&#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">(function($)&#123;</div><div class="line">    $.fn.numberRock=function(options)&#123;</div><div class="line">        var defaults=&#123;</div><div class="line">            lastNumber:100,</div><div class="line">            duration:2000,</div><div class="line">            easing:&apos;swing&apos;  //swing(默认 : 缓冲 : 慢快慢)  linear(匀速的)</div><div class="line">        &#125;;</div><div class="line">        var opts=$.extend(&#123;&#125;, defaults, options);</div><div class="line"></div><div class="line">        $(this).animate(&#123;</div><div class="line">            num : &quot;numberRock&quot;,</div><div class="line">        &#125;,&#123;</div><div class="line">            duration : opts.duration,</div><div class="line">            easing : opts.easing,</div><div class="line">            complete : function()&#123;</div><div class="line">                console.log(&quot;success&quot;);</div><div class="line">            &#125;,</div><div class="line">            step : function(a,b)&#123;  //可以检测我们定时器的每一次变化</div><div class="line">                $(this).html(parseInt(b.pos * opts.lastNumber));</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;)(jQuery);</div></pre></td></tr></table></figure><hr><p><a href="http://www.foryh.com" target="_blank" rel="external">www.foryh.com</a></p><hr>]]></content>
+    
+    <summary type="html">
+    
+      jQuery实现数字滚动效果
+    
+    </summary>
+    
+    
+      <category term="jQuery" scheme="http://foryh.com/tags/jQuery/"/>
     
   </entry>
   
