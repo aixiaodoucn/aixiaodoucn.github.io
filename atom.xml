@@ -252,26 +252,6 @@
   </entry>
   
   <entry>
-    <title>hexo d 无反应</title>
-    <link href="http://foryh.com/2017/09/25/hexo-d-%E6%97%A0%E5%8F%8D%E5%BA%94/"/>
-    <id>http://foryh.com/2017/09/25/hexo-d-无反应/</id>
-    <published>2017-09-25T06:31:48.000Z</published>
-    <updated>2019-11-05T02:00:21.757Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="问题-输入-hexo-d-无反应"><a href="#问题-输入-hexo-d-无反应" class="headerlink" title="问题 : 输入  hexo  d   无反应"></a>问题 : 输入  hexo  d   无反应</h4><a id="more"></a><h4 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h4><p>1.打开 _ config.yml   文件</p><p>​    deploy 下按照下图输入，repo 填写自己的 github 仓库地址</p><p><img alt="20170925143002" data-src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925143002.png" class="lozad"></p><p>2.输入</p><p>$npm install hexo-deployer-git  -save</p><p><img alt="20170925142942" data-src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925142942.png" class="lozad"></p><p>3.输入  hexo   d    </p><h5 id="工具推荐："><a href="#工具推荐：" class="headerlink" title="工具推荐："></a>工具推荐：</h5><p><a href=" http://owtr286kv.bkt.clouddn.com/software%E5%8F%96%E8%89%B2%E5%B7%A5%E5%85%B7.exe" target="_blank" rel="external">        取色软件下载</a></p>]]></content>
-    
-    <summary type="html">
-    
-      输入 hexo d 后无反应的解决方法
-    
-    </summary>
-    
-    
-      <category term="hexo" scheme="http://foryh.com/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
     <title>echarts 基本配置项记录</title>
     <link href="http://foryh.com/2017/09/25/echarts%20%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E9%A1%B9%E8%AE%B0%E5%BD%95/"/>
     <id>http://foryh.com/2017/09/25/echarts 基本配置项记录/</id>
@@ -288,6 +268,26 @@
     
     
       <category term="echarts" scheme="http://foryh.com/tags/echarts/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo d 无反应</title>
+    <link href="http://foryh.com/2017/09/25/hexo-d-%E6%97%A0%E5%8F%8D%E5%BA%94/"/>
+    <id>http://foryh.com/2017/09/25/hexo-d-无反应/</id>
+    <published>2017-09-25T06:31:48.000Z</published>
+    <updated>2019-11-05T02:00:21.757Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="问题-输入-hexo-d-无反应"><a href="#问题-输入-hexo-d-无反应" class="headerlink" title="问题 : 输入  hexo  d   无反应"></a>问题 : 输入  hexo  d   无反应</h4><a id="more"></a><h4 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h4><p>1.打开 _ config.yml   文件</p><p>​    deploy 下按照下图输入，repo 填写自己的 github 仓库地址</p><p><img alt="20170925143002" data-src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925143002.png" class="lozad"></p><p>2.输入</p><p>$npm install hexo-deployer-git  -save</p><p><img alt="20170925142942" data-src="http://owtr286kv.bkt.clouddn.com/img/hexo_Err20170925142942.png" class="lozad"></p><p>3.输入  hexo   d    </p><h5 id="工具推荐："><a href="#工具推荐：" class="headerlink" title="工具推荐："></a>工具推荐：</h5><p><a href=" http://owtr286kv.bkt.clouddn.com/software%E5%8F%96%E8%89%B2%E5%B7%A5%E5%85%B7.exe" target="_blank" rel="external">        取色软件下载</a></p>]]></content>
+    
+    <summary type="html">
+    
+      输入 hexo d 后无反应的解决方法
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://foryh.com/tags/hexo/"/>
     
   </entry>
   
