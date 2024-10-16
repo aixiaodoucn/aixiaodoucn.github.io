@@ -4,7 +4,7 @@
         <title>APP比比</title>
         <link>https://appbeebee.com</link>
         <description>前端技术分享博客</description>
-        <lastBuildDate>Wed, 16 Oct 2024 01:39:33 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Oct 2024 02:59:26 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh</language>
@@ -330,7 +330,7 @@
 <p>官方文档：<a href="https://uniapp.dcloud.net.cn/" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/</a></p>
 <p>必需技术：uniapp、vuejs 3、ES6及以上常用语法、pinia、css、scss</p>
 <p>‌‌ES6（‌ECMAScript 6）是JavaScript语言的一个标准，于2015年6月正式发布，正式名称为ECMAScript 2015（ES2015）。‌} ES6的目标是使JavaScript能够用于编写复杂的大型应用程序，成为企业级开发语言。它引入了许多新特性，包括但不限于<code>let和‌const关键字、‌模板字符串、‌解构赋值、‌箭头函数、‌Promise、async/await、模块化【import/export】</code>等，这些特性极大地增强了JavaScript的功能和表达能力。‌</p>
-<p><img src="http://aixiaodou.cn:8082/static-article/2024/09/uniapp/d6e16cc0adb04bf285d3ccb86855b9e2.png#pic_center" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<p><img src="https://gitee.com/aixiaodou/static-article/raw/main/2024/09/uniapp/d6e16cc0adb04bf285d3ccb86855b9e2.png#pic_center" alt="在这里插入图片描述" data-fancybox="gallery"></p>
 <h2 id="uniapp-介绍" tabindex="-1">uniapp 介绍 <a class="header-anchor" href="#uniapp-介绍" aria-label="Permalink to &quot;uniapp 介绍&quot;">&ZeroWidthSpace;</a></h2>
 <p>uniapp是基于vue.js开发所有前端应用的框架，编写一套代码，可发布到iOS、Android、Web（响应式）、以及各种小程序（微信/支付宝/百度/头条/飞书/QQ/快手/钉钉/淘宝）、快应用等多个平台。也支持鸿蒙。</p>
 <ul>
@@ -473,7 +473,7 @@
 <p>官方文档：<a href="https://uniapp.dcloud.net.cn/" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/</a></p>
 <p>必需技术：uniapp、vuejs 3、ES6及以上常用语法、pinia、css、scss</p>
 <p>‌‌ES6（‌ECMAScript 6）是JavaScript语言的一个标准，于2015年6月正式发布，正式名称为ECMAScript 2015（ES2015）。‌} ES6的目标是使JavaScript能够用于编写复杂的大型应用程序，成为企业级开发语言。它引入了许多新特性，包括但不限于<code>let和‌const关键字、‌模板字符串、‌解构赋值、‌箭头函数、‌Promise、async/await、模块化【import/export】</code>等，这些特性极大地增强了JavaScript的功能和表达能力。‌</p>
-<p><img src="http://aixiaodou.cn:8082/static-article/2024/09/uniapp/d6e16cc0adb04bf285d3ccb86855b9e2.png#pic_center" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<p><img src="https://gitee.com/aixiaodou/static-article/raw/main/2024/09/uniapp/d6e16cc0adb04bf285d3ccb86855b9e2.png#pic_center" alt="在这里插入图片描述" data-fancybox="gallery"></p>
 <h2 id="uniapp-介绍" tabindex="-1">uniapp 介绍 <a class="header-anchor" href="#uniapp-介绍" aria-label="Permalink to &quot;uniapp 介绍&quot;">&ZeroWidthSpace;</a></h2>
 <p>uniapp是基于vue.js开发所有前端应用的框架，编写一套代码，可发布到iOS、Android、Web（响应式）、以及各种小程序（微信/支付宝/百度/头条/飞书/QQ/快手/钉钉/淘宝）、快应用等多个平台。也支持鸿蒙。</p>
 <ul>
