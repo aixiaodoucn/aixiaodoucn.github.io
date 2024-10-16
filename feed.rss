@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>APP比比</title>
+        <link>https://appbeebee.com</link>
+        <description>前端技术分享博客</description>
+        <lastBuildDate>Wed, 16 Oct 2024 01:39:33 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>zh</language>
+        <image>
+            <title>APP比比</title>
+            <url>https://appbeebee.com/logo.jpg</url>
+            <link>https://appbeebee.com</link>
+        </image>
+        <copyright>Copyright © 2023-2024 APP比比</copyright>
+        <item>
+            <title><![CDATA[expressjs集成swagger文档express-swagger-generator和swagger-ui]]></title>
+            <link>https://appbeebee.com/posts/2024/09/27-expressjs-use-swagger.html</link>
+            <guid>https://appbeebee.com/posts/2024/09/27-expressjs-use-swagger.html</guid>
+            <pubDate>Fri, 27 Sep 2024 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<img src="http://aixiaodou.cn:8082/static-article/cover/express.png" alt="" /><p><h3><a href="https://appbeebee.com/posts/2024/09/27-expressjs-use-swagger.html">文章涉及下载地址访问原站：APP比比</a></h3></p><h1 id="expressjs集成swagger文档express-swagger-generator和swagger-ui注释配置的两种方法-query传参body传参url传参" tabindex="-1">expressjs集成swagger文档express-swagger-generator和swagger-ui注释配置的两种方法，query传参body传参url传参 <a class="header-anchor" href="#expressjs集成swagger文档express-swagger-generator和swagger-ui注释配置的两种方法-query传参body传参url传参" aria-label="Permalink to &quot;expressjs集成swagger文档express-swagger-generator和swagger-ui注释配置的两种方法，query传参body传参url传参&quot;">&ZeroWidthSpace;</a></h1>
+<h2 id="集成express-swagger-generator" tabindex="-1">集成express-swagger-generator <a class="header-anchor" href="#集成express-swagger-generator" aria-label="Permalink to &quot;集成express-swagger-generator&quot;">&ZeroWidthSpace;</a></h2>
+<h3 id="安装swagger依赖包" tabindex="-1">安装swagger依赖包 <a class="header-anchor" href="#安装swagger依赖包" aria-label="Permalink to &quot;安装swagger依赖包&quot;">&ZeroWidthSpace;</a></h3>
+<p><code>npm install  express-swagger-generator</code></p>
+<h3 id="app-js中初始化" tabindex="-1">app.js中初始化 <a class="header-anchor" href="#app-js中初始化" aria-label="Permalink to &quot;app.js中初始化&quot;">&ZeroWidthSpace;</a></h3>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> expressSwagger</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> require</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'express-swagger-generator'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">let</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> options </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  swaggerDefinition: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    info: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      description: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'This is a sample server'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      title: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Swagger'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      version: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'1.0.0'</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    host: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'localhost:3000'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    basePath: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    produces: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'application/json'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'application/xml'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">],</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    schemes: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'http'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'https'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">],</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    securityDefinitions: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      JWT: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        type: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'apiKey'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        in: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'header'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        name: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Authorization'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        description: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">''</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  route: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    url: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/swagger'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    docs: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/swagger.json'</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> //swagger文件 api</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  basedir: __dirname, </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">//app absolute path</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  files: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'./routes/*/*.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">] </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">//注意这块的配置，要和你项目目录层级一致</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">expressSwagger</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(app)(options)</span></span></code></pre>
+</div><h3 id="给接口添加文档注释" tabindex="-1">给接口添加文档注释 <a class="header-anchor" href="#给接口添加文档注释" aria-label="Permalink to &quot;给接口添加文档注释&quot;">&ZeroWidthSpace;</a></h3>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/**</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@typedef</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> fList</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {integer}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> fid</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {string}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> fname</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> - Some description for point - eg: 1234</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {string}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> flink</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> - Some description for point - eg: 1234</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {string}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> fIcon</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> - Some description for point - eg: 1234</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> */</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/**</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@typedef</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Response</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {[integer]}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> code</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {Array.&#x3C;fList>}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> fList</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {Array.&#x3C;fList>}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> bList</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> */</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/**</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * 友情链接</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@route</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> GET /publicRouter/friend_link</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@group</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> public - 公共模块</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@returns</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {Response.model}</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> 200 - 友情链接数据</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@returns</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {Error}</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  default - Unexpected error</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">router.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">get</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/friend_link'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, friendLink_controller.friendLink)</span></span></code></pre>
+</div><p>效果如下：
+<img src="http://aixiaodou.cn:8082/static-article/2024/09/express-swagger/798f5e459190492fa3cbb876c4c356d4.png" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<h3 id="参数-响应写法" tabindex="-1">参数&amp;响应写法 <a class="header-anchor" href="#参数-响应写法" aria-label="Permalink to &quot;参数&amp;响应写法&quot;">&ZeroWidthSpace;</a></h3>
+<p>required 是必填项，可选参数。</p>
+<ul>
+<li>url传参：@param {string} email.query.required - username or email</li>
+<li>body传参：@param {Point.model} point.body.required - the new point</li>
+<li>响应：@returns {Response.model} 200 - An array of user info</li>
+<li>url传参：@param {string} typeClass.path  - 分类类别，typeClass对应url参数
+<ul>
+<li typeClass="">url设置：@route GET /account/account_type_list/</li>
+</ul>
+</li>
+</ul>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/**</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@typedef</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Product</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {integer}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> id</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {string}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> name.required</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> - Some description for product</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {Array.&#x3C;Point>}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> Point</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> */</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/**</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@typedef</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Point</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {integer}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> x.required</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {integer}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> y.required</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> - Some description for point - eg: 1234</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {string}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> color</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {enum}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> status</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> - Status values that need to be considered for filter - eg: available,pending</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> */</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/**</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@typedef</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Error</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {string}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> code.required</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> */</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/**</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@typedef</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Response</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@property</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {[integer]}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> code</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> */</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/**</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * This function comment is parsed by doctrine</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * sdfkjsldfkj</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@route</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> POST /users</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@param</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {Point.model}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> point.body.required</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> - the new point</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@group</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> foo - Operations about user</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@param</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {string}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> email.query.required</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> - username or email</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@param</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {string}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> password.query.required</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> - user's password.</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@param</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {enum}</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> status.query.required</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> - Status values that need to be considered for filter - eg: available,pending</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@operationId</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> retrieveFooInfo</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@produces</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> application/json application/xml</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@consumes</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> application/json application/xml</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@returns</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {Response.model}</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> 200 - An array of user info</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@returns</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {Product.model}</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  default - Unexpected error</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@returns</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> {Array.&#x3C;Point>}</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> Point - Some description for point</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@headers</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> {integer} 200.X-Rate-Limit - calls per hour allowed by the user</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@headers</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> {string} 200.X-Expires-After - 	date in UTC when token expires</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@security</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> JWT</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">router.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">post</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/friend_link'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, friendLink_controller.friendLink)</span></span></code></pre>
+</div><h3 id="遇到问题1" tabindex="-1">遇到问题1： <a class="header-anchor" href="#遇到问题1" aria-label="Permalink to &quot;遇到问题1：&quot;">&ZeroWidthSpace;</a></h3>
+<p>由于我之前对404访问的路由有拦截处理，所以访问 <code>http://localhost:3000/swagger</code>会报404错误</p>
+<p><img src="http://aixiaodou.cn:8082/static-article/2024/09/express-swagger/22474c5e423542999e6bd721077b11e7.png" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<p>拦截代码如下：app.js</p>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// catch 404 and forward to error handler</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">app.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">use</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">function</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">req</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">res</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">next</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  // 添加如下if判断代码就可以正常访问了</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(req.url.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">indexOf</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/swagger'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!==</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> -</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">     next</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">()</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">     return</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">   }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  res.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">send</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({success: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">false</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, msg: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Not Found'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, code: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">404</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">});</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">});</span></span></code></pre>
+</div><h3 id="遇到问题2" tabindex="-1">遇到问题2： <a class="header-anchor" href="#遇到问题2" aria-label="Permalink to &quot;遇到问题2：&quot;">&ZeroWidthSpace;</a></h3>
+<p>配置好后swagger正常打开，但没有配置的接口，是由于options-&gt;files的层级配置的不对。
+<img src="http://aixiaodou.cn:8082/static-article/2024/09/express-swagger/88338ba539c24196bc7ac0614c3ea253.png" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<h3 id="配置环境变量-部署后设置swagger地址" tabindex="-1">配置环境变量，部署后设置swagger地址 <a class="header-anchor" href="#配置环境变量-部署后设置swagger地址" aria-label="Permalink to &quot;配置环境变量，部署后设置swagger地址&quot;">&ZeroWidthSpace;</a></h3>
+<h4 id="安装cross-env" tabindex="-1">安装<code>cross-env</code> <a class="header-anchor" href="#安装cross-env" aria-label="Permalink to &quot;安装`cross-env`&quot;">&ZeroWidthSpace;</a></h4>
+<p><code>npm i  - D cross-env</code></p>
+<h3 id="修改启动命令" tabindex="-1">修改启动命令 <a class="header-anchor" href="#修改启动命令" aria-label="Permalink to &quot;修改启动命令&quot;">&ZeroWidthSpace;</a></h3>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"scripts"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">   "start:dev"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"cross-env NODE_ENV=development node-dev ./bin/www"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">   "start"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"cross-env NODE_ENV=production node-dev ./bin/www"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> },</span></span></code></pre>
+</div><h4 id="配置swagger配置" tabindex="-1">配置swagger配置 <a class="header-anchor" href="#配置swagger配置" aria-label="Permalink to &quot;配置swagger配置&quot;">&ZeroWidthSpace;</a></h4>
+<p>通过环境变量，动态设置host【如果有其他更优方案，欢迎大家评论指正】</p>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> _env</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> app.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">get</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'env'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">let</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> options </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  swaggerDefinition: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    info: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      description: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'This is a sample server'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      title: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Swagger'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      version: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'1.0.0'</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    host: _env </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">===</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> 'production'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> ?</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> 'aixiaodou.cn'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> :</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> 'localhost:3000'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    basePath: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    produces: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'application/json'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'application/xml'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">],</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    schemes: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'http'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'https'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">],</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    securityDefinitions: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      JWT: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        type: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'apiKey'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        in: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'header'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        name: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Authorization'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        description: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">''</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  route: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    url: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/swagger'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    docs: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/swagger.json'</span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> //swagger文件 api</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  basedir: __dirname, </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">//app absolute path</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  files: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'./routes/*/*.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">] </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">//Path to the API handle folder</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">expressSwagger</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(app)(options)</span></span></code></pre>
+</div><h4 id="配置服务器内pm2启动" tabindex="-1">配置服务器内pm2启动 <a class="header-anchor" href="#配置服务器内pm2启动" aria-label="Permalink to &quot;配置服务器内pm2启动&quot;">&ZeroWidthSpace;</a></h4>
+<p>新建<code>ecosystem.config.js</code>文件，使用pm2启动
+<code> pm2 start ecosystem.config.js</code></p>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">module</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">exports</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  apps : [</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      name: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"serve"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      script: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"yarn start"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      watch: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      env: {</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">        "NODE_ENV"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"production"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">        "PORT"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">3000</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  ]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+</div><h2 id="集成swagger-ui" tabindex="-1">集成swagger-ui <a class="header-anchor" href="#集成swagger-ui" aria-label="Permalink to &quot;集成swagger-ui&quot;">&ZeroWidthSpace;</a></h2>
+<h3 id="安装依赖包" tabindex="-1">安装依赖包 <a class="header-anchor" href="#安装依赖包" aria-label="Permalink to &quot;安装依赖包&quot;">&ZeroWidthSpace;</a></h3>
+<p><code>npm install swagger-jsdoc swagger-ui-express</code></p>
+<h3 id="app-js中初始化-1" tabindex="-1">app.js中初始化 <a class="header-anchor" href="#app-js中初始化-1" aria-label="Permalink to &quot;app.js中初始化&quot;">&ZeroWidthSpace;</a></h3>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> swaggerJsDoc</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> require</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'swagger-jsdoc'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> swaggerUi</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> require</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'swagger-ui-express'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> _env</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> app.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">get</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'env'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">log</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'当前环境：'</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> +</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> _env);</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">let</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> options </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  swaggerDefinition: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    openapi: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'3.0.0'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    info: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      description: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">''</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      title: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'艾小逗开发文档'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      version: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'1.0.0'</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    servers: [</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      {url: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'http://localhost:3000'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">},</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      {url: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'http://aixiaodou.cn:3000'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    ],</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    components: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      securitySchemes: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        bearerAuth: {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">          type: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'apiKey'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">          in: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'header'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">          name: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Authorization'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">          bearerFormat: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'JWT'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    security: [</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        bearerAuth: [], </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 默认应用 JWT 认证</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    ],</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  apis: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'./routes/*/*.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">] </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">//Path to the API handle folder</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 生成 Swagger 文档</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> swaggerDocs</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> swaggerJsDoc</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(options);</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 使用 Swagger UI</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">app.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">use</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/docs'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, swaggerUi.serve, swaggerUi.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">setup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(swaggerDocs));</span></span></code></pre>
+</div><h3 id="给接口添加文档注释-1" tabindex="-1">给接口添加文档注释 <a class="header-anchor" href="#给接口添加文档注释-1" aria-label="Permalink to &quot;给接口添加文档注释&quot;">&ZeroWidthSpace;</a></h3>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/**</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@swagger</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> * /publicRouter/friend_link:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *   get:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *     tags:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *       - public</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *     summary: 友情链接</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *     description: 获取友情链接数据</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *     responses:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *       200:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *         description: 友情链接数据</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *         content:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *           application/json:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *             schema:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *               type: object</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *               properties:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                 code:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                   type: integer</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                   description: 状态码</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                 fList:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                   type: array</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                   items:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                     type: object</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                     properties:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                       fid:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         type: integer</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         description: 友链id</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                       fname:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         type: string</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         description: 友链名称</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                       flink:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         type: string</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         description: 友链地址</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                       fIcon:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         type: string</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         description: 友链图标</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                 bList:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                   type: array</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                   items:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                     type: object</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                     properties:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                       fid:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         type: integer</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         description: 友链id</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                       fname:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         type: string</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         description: 友链名称</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                       flink:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         type: string</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         description: 友链地址</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                       fIcon:</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         type: string</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> *                         description: 友链图标</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D"> */</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">router.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">get</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/friend_link'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, friendLink_controller.friendLink)</span></span></code></pre>
+</div><p>效果如下：
+<img src="http://aixiaodou.cn:8082/static-article/2024/09/express-swagger/8f9ae3f3c47b48c588b5b6a2b4addd22.png" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<h2 id="对比" tabindex="-1">对比： <a class="header-anchor" href="#对比" aria-label="Permalink to &quot;对比：&quot;">&ZeroWidthSpace;</a></h2>
+<ul>
+<li>swagger-ui使用的是openapi3.0，express-swagger-generator使用的是openapi2.0</li>
+<li>注释写法有很大差别：可查看<code>给接口添加文档注释</code>对比下</li>
+<li>express-swagger-generator查看npm，已经停止维护了</li>
+<li>跟人感觉express-swagger-generator写法简洁些，swagger-ui需要注意空格缩进。
+<img src="http://aixiaodou.cn:8082/static-article/2024/09/express-swagger/38fb6850083545caa151ac08c16bb1d7.png" alt="在这里插入图片描述" data-fancybox="gallery"></li>
+<li>swagger-ui使用openapi3.0可以切换接口调用服务
+<img src="http://aixiaodou.cn:8082/static-article/2024/09/express-swagger/0a2ff03e6ab242989e6d37f3885dfa0d.png" alt="在这里插入图片描述" data-fancybox="gallery"></li>
+</ul>
+<p><h3 style="color:#3451b2"><a href="https://appbeebee.com/posts/2024/09/27-expressjs-use-swagger.html">文章涉及下载地址访问原站：APP比比</a></h3></p>]]></content:encoded>
+            <enclosure url="http://aixiaodou.cn:8082/static-article/cover/express.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[uniapp快速入门教程]]></title>
+            <link>https://appbeebee.com/posts/2024/09/19-uniapp.html</link>
+            <guid>https://appbeebee.com/posts/2024/09/19-uniapp.html</guid>
+            <pubDate>Thu, 19 Sep 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[<p>uniapp快速入门教程，内容来源于官方文档，仅仅记录快速入门需要了解到的知识点</p>
+<h1 id="介绍" tabindex="-1">介绍 <a class="header-anchor" href="#介绍" aria-label="Permalink to &quot;介绍&quot;">&ZeroWidthSpace;</a></h1>
+<p>官方文档：<a href="https://uniapp.dcloud.net.cn/" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/</a></p>
+<p>必需技术：uniapp、vuejs 3、ES6及以上常用语法、pinia、css、scss</p>
+<p>‌‌ES6（‌ECMAScript 6）是JavaScript语言的一个标准，于2015年6月正式发布，正式名称为ECMAScript 2015（ES2015）。‌} ES6的目标是使JavaScript能够用于编写复杂的大型应用程序，成为企业级开发语言。它引入了许多新特性，包括但不限于<code>let和‌const关键字、‌模板字符串、‌解构赋值、‌箭头函数、‌Promise、async/await、模块化【import/export】</code>等，这些特性极大地增强了JavaScript的功能和表达能力。‌</p>
+<p><img src="http://aixiaodou.cn:8082/static-article/2024/09/uniapp/d6e16cc0adb04bf285d3ccb86855b9e2.png#pic_center" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<h2 id="uniapp-介绍" tabindex="-1">uniapp 介绍 <a class="header-anchor" href="#uniapp-介绍" aria-label="Permalink to &quot;uniapp 介绍&quot;">&ZeroWidthSpace;</a></h2>
+<p>uniapp是基于vue.js开发所有前端应用的框架，编写一套代码，可发布到iOS、Android、Web（响应式）、以及各种小程序（微信/支付宝/百度/头条/飞书/QQ/快手/钉钉/淘宝）、快应用等多个平台。也支持鸿蒙。</p>
+<ul>
+<li>在web平台，将.vue文件编译为js代码。与普通的vue cli项目类似</li>
+<li>在微信小程序平台，编译器将.vue文件拆分生成wxml、wxss、js等代码</li>
+<li>在app平台，将.vue文件编译为js代码。进一步，如果涉及uts代码：
+<ul>
+<li>在Android平台，将.uts文件编译为kotlin代码</li>
+<li>在iOS平台，将.uts文件编译为swift代码</li>
+<li>鸿蒙OS平台，编译为ArkTS（HBuilderX 4.22+）</li>
+</ul>
+</li>
+</ul>
+<p>h5端运行于浏览器中。非h5端（包含小程序和App），Android平台运行在v8引擎中，iOS平台运行在iOS自带的jscore引擎中，都没有运行在浏览器或webview里。</p>
+<h2 id="uniapp-x-介绍" tabindex="-1">uniapp x 介绍 <a class="header-anchor" href="#uniapp-x-介绍" aria-label="Permalink to &quot;uniapp x 介绍&quot;">&ZeroWidthSpace;</a></h2>
+<p>uni-app x，是下一代 uni-app，是一个跨平台应用开发引擎。</p>
+<p>uni-app x 是一个庞大的工程，它包括uts语言、uvue渲染引擎、uni的组件和API、以及扩展机制。</p>
+<p>uts是一门类ts的、跨平台的、新语言。</p>
+<p>uts在iOS平台编译为swift、在Android平台编译为kotlin、在Web和小程序平台编译为js、在鸿蒙next平台上编译为ArkTS。</p>
+<p>在Android平台，uni-app x 的工程被整体编译为kotlin代码，本质上是换了vue写法的原生kotlin应用，在性能上与原生kotlin一致。</p>
+<ul>
+<li><code>web/小程序</code>平台，编译为JavaScript</li>
+<li><code>Android</code>平台，编译为Kotlin</li>
+<li><code>iOS</code>平台，编译Swift</li>
+<li>暂不支持小程序</li>
+</ul>
+<h2 id="功能框架图" tabindex="-1">功能框架图 <a class="header-anchor" href="#功能框架图" aria-label="Permalink to &quot;功能框架图&quot;">&ZeroWidthSpace;</a></h2>
+<p><img src="http://aixiaodou.cn:8082/static-article/2024/09/uniapp/1171b85ffc3b462e9ad333b96b5c78f7.png#pic_center" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<h2 id="创建项目-发布" tabindex="-1">创建项目&amp;发布 <a class="header-anchor" href="#创建项目-发布" aria-label="Permalink to &quot;创建项目&amp;发布&quot;">&ZeroWidthSpace;</a></h2>
+<p><code>uni-app</code>支持通过 可视化界面【推荐&amp;简单】、<a href="https://uniapp.dcloud.io/quickstart-cli" target="_blank" rel="noreferrer"><code>vue-cli</code>命令行</a> 两种方式快速创建项目。</p>
+<p><a href="https://uniapp.dcloud.net.cn/quickstart-hx.html" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/quickstart-hx.html</a></p>
+<h2 id="组件-标签的变化" tabindex="-1">组件/标签的变化 <a class="header-anchor" href="#组件-标签的变化" aria-label="Permalink to &quot;组件/标签的变化&quot;">&ZeroWidthSpace;</a></h2>
+<p><a href="https://uniapp.dcloud.net.cn/vernacular.html#%E7%BB%84%E4%BB%B6-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%8F%98%E5%8C%96" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/vernacular.html#%E7%BB%84%E4%BB%B6-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%8F%98%E5%8C%96</a></p>
+<ul>
+<li>div 改成 <a href="https://uniapp.dcloud.io/component/view" target="_blank" rel="noreferrer">view</a></li>
+<li>span、font 改成 <a href="https://uniapp.dcloud.io/component/text" target="_blank" rel="noreferrer">text</a></li>
+<li>a 改成 <a href="https://uniapp.dcloud.io/component/navigator" target="_blank" rel="noreferrer">navigator</a></li>
+<li>img 改成 <a href="https://uniapp.dcloud.io/component/image" target="_blank" rel="noreferrer">image</a></li>
+<li>......</li>
+</ul>
+<h2 id="js的变化" tabindex="-1">js的变化 <a class="header-anchor" href="#js的变化" aria-label="Permalink to &quot;js的变化&quot;">&ZeroWidthSpace;</a></h2>
+<p>【自行查看】<a href="https://uniapp.dcloud.net.cn/vernacular.html#js%E7%9A%84%E5%8F%98%E5%8C%96" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/vernacular.html#js%E7%9A%84%E5%8F%98%E5%8C%96</a></p>
+<ul>
+<li>
+<p>标准js语法和api都支持，比如if、for、settimeout、indexOf等。</p>
+</li>
+<li>
+<p>但浏览器专用的window、document、navigator、location对象，包括cookie等存储，只有在浏览器中才有，app和小程序都不支持。</p>
+</li>
+<li>
+<p>这意味着依赖document的很多HTML的库，比如jquery无法使用。</p>
+</li>
+<li>
+<p>在uni-app中只支持标准的vue，不支持小程序的数据绑定语法。</p>
+</li>
+<li>
+<p>js api变化</p>
+<ul>
+<li>alert,confirm 改成 <a href="https://uniapp.dcloud.io/api/ui/prompt?id=showmodal" target="_blank" rel="noreferrer">uni.showmodel</a></li>
+<li>ajax 改成 <a href="https://uniapp.dcloud.io/api/request/request" target="_blank" rel="noreferrer">uni.request</a></li>
+<li>cookie、session 没有了，local.storage 改成 <a href="https://uniapp.dcloud.io/api/storage/storage?id=setstorage" target="_blank" rel="noreferrer">uni.storage</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="css的变化" tabindex="-1">css的变化 <a class="header-anchor" href="#css的变化" aria-label="Permalink to &quot;css的变化&quot;">&ZeroWidthSpace;</a></h2>
+<ul>
+<li>标准的css基本都是支持的</li>
+<li>*选择器不支持；</li>
+<li>单位方面，px无法动态适应不同宽度的屏幕，如果想使用根据屏幕宽度自适应的单位，推荐<strong>使用rpx</strong>，全端支持。</li>
+</ul>
+<h2 id="工程结构和页面管理" tabindex="-1">工程结构和页面管理 <a class="header-anchor" href="#工程结构和页面管理" aria-label="Permalink to &quot;工程结构和页面管理&quot;">&ZeroWidthSpace;</a></h2>
+<ul>
+<li>每个可显示的页面，都必须在 <a href="https://uniapp.dcloud.io/collocation/pages" target="_blank" rel="noreferrer">pages.json</a> 中注册。</li>
+</ul>
+<div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span>┌─uniCloud              云空间目录，支付宝小程序云为uniCloud-alipay，阿里云为uniCloud-aliyun，腾讯云为uniCloud-tcb（详见uniCloud）</span></span>
+<span class="line"><span>│─components            符合vue组件规范的uni-app组件目录</span></span>
+<span class="line"><span>│  └─comp-a.vue         可复用的a组件</span></span>
+<span class="line"><span>├─utssdk                存放uts文件</span></span>
+<span class="line"><span>├─pages                 业务页面文件存放的目录</span></span>
+<span class="line"><span>│  ├─index</span></span>
+<span class="line"><span>│  │  └─index.vue       index页面</span></span>
+<span class="line"><span>│  └─list</span></span>
+<span class="line"><span>│     └─list.vue        list页面</span></span>
+<span class="line"><span>├─static                存放应用引用的本地静态资源（如图片、视频等）的目录，注意：静态资源都应存放于此目录</span></span>
+<span class="line"><span>├─uni_modules           存放uni_module 详见</span></span>
+<span class="line"><span>├─platforms             存放各平台专用页面的目录，详见</span></span>
+<span class="line"><span>├─nativeplugins         App原生语言插件 详见</span></span>
+<span class="line"><span>├─nativeResources       App端原生资源目录</span></span>
+<span class="line"><span>│  ├─android            Android原生资源目录 详见</span></span>
+<span class="line"><span>|  └─ios                iOS原生资源目录 详见</span></span>
+<span class="line"><span>├─hybrid                App端存放本地html文件的目录，详见</span></span>
+<span class="line"><span>├─wxcomponents          存放小程序组件的目录，详见</span></span>
+<span class="line"><span>├─unpackage             非工程代码，一般存放运行或发行的编译结果</span></span>
+<span class="line"><span>├─main.js               Vue初始化入口文件</span></span>
+<span class="line"><span>├─App.vue               应用配置，用来配置App全局样式以及监听 应用生命周期</span></span>
+<span class="line"><span>├─pages.json            配置页面路由、导航条、选项卡等页面类信息，详见</span></span>
+<span class="line"><span>├─manifest.json         配置应用名称、appid、logo、版本等打包信息，详见</span></span>
+<span class="line"><span>├─AndroidManifest.xml   Android原生应用清单文件 详见</span></span>
+<span class="line"><span>├─Info.plist            iOS原生应用配置文件 详见</span></span>
+<span class="line"><span>└─uni.scss              内置的常用样式变量</span></span></code></pre>
+</div><h1 id="pages-json" tabindex="-1">pages.json <a class="header-anchor" href="#pages-json" aria-label="Permalink to &quot;pages.json&quot;">&ZeroWidthSpace;</a></h1>
+<p><a href="https://uniapp.dcloud.net.cn/collocation/pages.html" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/collocation/pages.html</a></p>
+<p><code>pages.json</code> 文件用来对 uni-app 进行全局配置，决定页面文件的路径、窗口样式、原生的导航栏、底部的原生tabbar 等。</p>
+<ul>
+<li>pages</li>
+<li>style</li>
+<li>tabBar</li>
+</ul>
+<h1 id="manifest-json-应用配置" tabindex="-1">manifest.json 应用配置 <a class="header-anchor" href="#manifest-json-应用配置" aria-label="Permalink to &quot;manifest.json 应用配置&quot;">&ZeroWidthSpace;</a></h1>
+<p><a href="https://uniapp.dcloud.net.cn/collocation/manifest.html" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/collocation/manifest.html</a></p>
+<p><code>manifest.json</code> 文件是应用的配置文件，用于指定应用的名称、图标、权限等。HBuilderX 创建的工程此文件在根目录，CLI 创建的工程此文件在 src 目录。</p>
+<h1 id="组件" tabindex="-1">组件 <a class="header-anchor" href="#组件" aria-label="Permalink to &quot;组件&quot;">&ZeroWidthSpace;</a></h1>
+<h2 id="easycom组件规范" tabindex="-1">easycom组件规范 <a class="header-anchor" href="#easycom组件规范" aria-label="Permalink to &quot;easycom组件规范&quot;">&ZeroWidthSpace;</a></h2>
+<p>传统vue组件，需要安装、引用、注册，三个步骤后才能使用组件。<code>easycom</code>将其精简为一步。</p>
+<p>只要组件安装在项目的<code>components</code>目录下或<code>uni_modules</code>目录下，并符合<code>components/组件名称/组件名称.(vue|uvue)</code>目录结构（注意：当同时存在vue和uvue时，uni-app 项目优先使用 vue 文件，而uni-app x 项目优先使用 uvue 文件，<a href="https://doc.dcloud.net.cn/uni-app-x/component/#%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E5%90%8C%E6%97%B6%E5%85%BC%E5%AE%B9-uni-app-x-%E5%92%8C-uni-app-%E7%9A%84%E7%BB%84%E4%BB%B6" target="_blank" rel="noreferrer">详情</a>）。就可以不用引用、注册，直接在页面中使用。</p>
+<p>组件库选型：</p>
+<p>uni-ui：<a href="https://uniapp.dcloud.net.cn/component/uniui/uni-ui.html" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/component/uniui/uni-ui.html</a>
+<img src="http://aixiaodou.cn:8082/static-article/2024/09/uniapp/88a4875249144c9ea76ef61ca794380d.jpeg#pic_center" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<h1 id="api" tabindex="-1">api <a class="header-anchor" href="#api" aria-label="Permalink to &quot;api&quot;">&ZeroWidthSpace;</a></h1>
+<p><a href="https://uniapp.dcloud.net.cn/api/" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/api/</a></p>
+<p><code>uni-app</code>的 js API 由标准 ECMAScript 的 js API 和 uni 扩展 API 这两部分组成。</p>
+<p>标准 ECMAScript 的 js 仅是最基础的 js。浏览器基于它扩展了 window、document、navigator 等对象。小程序也基于标准 js 扩展了各种 wx.xx、my.xx、swan.xx 的 API。node 也扩展了 fs 等模块。</p>
+<p>uni-app 基于 ECMAScript 扩展了 uni 对象，并且 API 命名与小程序保持兼容。</p>
+<h1 id="教程" tabindex="-1">教程 <a class="header-anchor" href="#教程" aria-label="Permalink to &quot;教程&quot;">&ZeroWidthSpace;</a></h1>
+<h2 id="应用生命周期-全局样式" tabindex="-1">应用生命周期&amp;全局样式 <a class="header-anchor" href="#应用生命周期-全局样式" aria-label="Permalink to &quot;应用生命周期&amp;全局样式&quot;">&ZeroWidthSpace;</a></h2>
+<ul>
+<li>
+<p>应用生命周期仅可在<code>App.vue/App.nvue</code>中监听，在页面监听无效。</p>
+</li>
+<li>
+<p>在<code>App.vue</code>中，可以定义一些全局通用样式。</p>
+</li>
+</ul>
+<p>应用生命周期：</p>
+<p>| 函数名               | 说明                                                         | 平台兼容              |
+| :</p>
+]]></description>
+            <content:encoded><![CDATA[<img src="http://aixiaodou.cn:8082/static-article/cover/uniapp.png" alt="" /><p><h3><a href="https://appbeebee.com/posts/2024/09/19-uniapp.html">文章涉及下载地址访问原站：APP比比</a></h3></p><p>uniapp快速入门教程，内容来源于官方文档，仅仅记录快速入门需要了解到的知识点</p>
+<h1 id="介绍" tabindex="-1">介绍 <a class="header-anchor" href="#介绍" aria-label="Permalink to &quot;介绍&quot;">&ZeroWidthSpace;</a></h1>
+<p>官方文档：<a href="https://uniapp.dcloud.net.cn/" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/</a></p>
+<p>必需技术：uniapp、vuejs 3、ES6及以上常用语法、pinia、css、scss</p>
+<p>‌‌ES6（‌ECMAScript 6）是JavaScript语言的一个标准，于2015年6月正式发布，正式名称为ECMAScript 2015（ES2015）。‌} ES6的目标是使JavaScript能够用于编写复杂的大型应用程序，成为企业级开发语言。它引入了许多新特性，包括但不限于<code>let和‌const关键字、‌模板字符串、‌解构赋值、‌箭头函数、‌Promise、async/await、模块化【import/export】</code>等，这些特性极大地增强了JavaScript的功能和表达能力。‌</p>
+<p><img src="http://aixiaodou.cn:8082/static-article/2024/09/uniapp/d6e16cc0adb04bf285d3ccb86855b9e2.png#pic_center" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<h2 id="uniapp-介绍" tabindex="-1">uniapp 介绍 <a class="header-anchor" href="#uniapp-介绍" aria-label="Permalink to &quot;uniapp 介绍&quot;">&ZeroWidthSpace;</a></h2>
+<p>uniapp是基于vue.js开发所有前端应用的框架，编写一套代码，可发布到iOS、Android、Web（响应式）、以及各种小程序（微信/支付宝/百度/头条/飞书/QQ/快手/钉钉/淘宝）、快应用等多个平台。也支持鸿蒙。</p>
+<ul>
+<li>在web平台，将.vue文件编译为js代码。与普通的vue cli项目类似</li>
+<li>在微信小程序平台，编译器将.vue文件拆分生成wxml、wxss、js等代码</li>
+<li>在app平台，将.vue文件编译为js代码。进一步，如果涉及uts代码：
+<ul>
+<li>在Android平台，将.uts文件编译为kotlin代码</li>
+<li>在iOS平台，将.uts文件编译为swift代码</li>
+<li>鸿蒙OS平台，编译为ArkTS（HBuilderX 4.22+）</li>
+</ul>
+</li>
+</ul>
+<p>h5端运行于浏览器中。非h5端（包含小程序和App），Android平台运行在v8引擎中，iOS平台运行在iOS自带的jscore引擎中，都没有运行在浏览器或webview里。</p>
+<h2 id="uniapp-x-介绍" tabindex="-1">uniapp x 介绍 <a class="header-anchor" href="#uniapp-x-介绍" aria-label="Permalink to &quot;uniapp x 介绍&quot;">&ZeroWidthSpace;</a></h2>
+<p>uni-app x，是下一代 uni-app，是一个跨平台应用开发引擎。</p>
+<p>uni-app x 是一个庞大的工程，它包括uts语言、uvue渲染引擎、uni的组件和API、以及扩展机制。</p>
+<p>uts是一门类ts的、跨平台的、新语言。</p>
+<p>uts在iOS平台编译为swift、在Android平台编译为kotlin、在Web和小程序平台编译为js、在鸿蒙next平台上编译为ArkTS。</p>
+<p>在Android平台，uni-app x 的工程被整体编译为kotlin代码，本质上是换了vue写法的原生kotlin应用，在性能上与原生kotlin一致。</p>
+<ul>
+<li><code>web/小程序</code>平台，编译为JavaScript</li>
+<li><code>Android</code>平台，编译为Kotlin</li>
+<li><code>iOS</code>平台，编译Swift</li>
+<li>暂不支持小程序</li>
+</ul>
+<h2 id="功能框架图" tabindex="-1">功能框架图 <a class="header-anchor" href="#功能框架图" aria-label="Permalink to &quot;功能框架图&quot;">&ZeroWidthSpace;</a></h2>
+<p><img src="http://aixiaodou.cn:8082/static-article/2024/09/uniapp/1171b85ffc3b462e9ad333b96b5c78f7.png#pic_center" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<h2 id="创建项目-发布" tabindex="-1">创建项目&amp;发布 <a class="header-anchor" href="#创建项目-发布" aria-label="Permalink to &quot;创建项目&amp;发布&quot;">&ZeroWidthSpace;</a></h2>
+<p><code>uni-app</code>支持通过 可视化界面【推荐&amp;简单】、<a href="https://uniapp.dcloud.io/quickstart-cli" target="_blank" rel="noreferrer"><code>vue-cli</code>命令行</a> 两种方式快速创建项目。</p>
+<p><a href="https://uniapp.dcloud.net.cn/quickstart-hx.html" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/quickstart-hx.html</a></p>
+<h2 id="组件-标签的变化" tabindex="-1">组件/标签的变化 <a class="header-anchor" href="#组件-标签的变化" aria-label="Permalink to &quot;组件/标签的变化&quot;">&ZeroWidthSpace;</a></h2>
+<p><a href="https://uniapp.dcloud.net.cn/vernacular.html#%E7%BB%84%E4%BB%B6-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%8F%98%E5%8C%96" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/vernacular.html#%E7%BB%84%E4%BB%B6-%E6%A0%87%E7%AD%BE%E7%9A%84%E5%8F%98%E5%8C%96</a></p>
+<ul>
+<li>div 改成 <a href="https://uniapp.dcloud.io/component/view" target="_blank" rel="noreferrer">view</a></li>
+<li>span、font 改成 <a href="https://uniapp.dcloud.io/component/text" target="_blank" rel="noreferrer">text</a></li>
+<li>a 改成 <a href="https://uniapp.dcloud.io/component/navigator" target="_blank" rel="noreferrer">navigator</a></li>
+<li>img 改成 <a href="https://uniapp.dcloud.io/component/image" target="_blank" rel="noreferrer">image</a></li>
+<li>......</li>
+</ul>
+<h2 id="js的变化" tabindex="-1">js的变化 <a class="header-anchor" href="#js的变化" aria-label="Permalink to &quot;js的变化&quot;">&ZeroWidthSpace;</a></h2>
+<p>【自行查看】<a href="https://uniapp.dcloud.net.cn/vernacular.html#js%E7%9A%84%E5%8F%98%E5%8C%96" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/vernacular.html#js%E7%9A%84%E5%8F%98%E5%8C%96</a></p>
+<ul>
+<li>
+<p>标准js语法和api都支持，比如if、for、settimeout、indexOf等。</p>
+</li>
+<li>
+<p>但浏览器专用的window、document、navigator、location对象，包括cookie等存储，只有在浏览器中才有，app和小程序都不支持。</p>
+</li>
+<li>
+<p>这意味着依赖document的很多HTML的库，比如jquery无法使用。</p>
+</li>
+<li>
+<p>在uni-app中只支持标准的vue，不支持小程序的数据绑定语法。</p>
+</li>
+<li>
+<p>js api变化</p>
+<ul>
+<li>alert,confirm 改成 <a href="https://uniapp.dcloud.io/api/ui/prompt?id=showmodal" target="_blank" rel="noreferrer">uni.showmodel</a></li>
+<li>ajax 改成 <a href="https://uniapp.dcloud.io/api/request/request" target="_blank" rel="noreferrer">uni.request</a></li>
+<li>cookie、session 没有了，local.storage 改成 <a href="https://uniapp.dcloud.io/api/storage/storage?id=setstorage" target="_blank" rel="noreferrer">uni.storage</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="css的变化" tabindex="-1">css的变化 <a class="header-anchor" href="#css的变化" aria-label="Permalink to &quot;css的变化&quot;">&ZeroWidthSpace;</a></h2>
+<ul>
+<li>标准的css基本都是支持的</li>
+<li>*选择器不支持；</li>
+<li>单位方面，px无法动态适应不同宽度的屏幕，如果想使用根据屏幕宽度自适应的单位，推荐<strong>使用rpx</strong>，全端支持。</li>
+</ul>
+<h2 id="工程结构和页面管理" tabindex="-1">工程结构和页面管理 <a class="header-anchor" href="#工程结构和页面管理" aria-label="Permalink to &quot;工程结构和页面管理&quot;">&ZeroWidthSpace;</a></h2>
+<ul>
+<li>每个可显示的页面，都必须在 <a href="https://uniapp.dcloud.io/collocation/pages" target="_blank" rel="noreferrer">pages.json</a> 中注册。</li>
+</ul>
+<div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span>┌─uniCloud              云空间目录，支付宝小程序云为uniCloud-alipay，阿里云为uniCloud-aliyun，腾讯云为uniCloud-tcb（详见uniCloud）</span></span>
+<span class="line"><span>│─components            符合vue组件规范的uni-app组件目录</span></span>
+<span class="line"><span>│  └─comp-a.vue         可复用的a组件</span></span>
+<span class="line"><span>├─utssdk                存放uts文件</span></span>
+<span class="line"><span>├─pages                 业务页面文件存放的目录</span></span>
+<span class="line"><span>│  ├─index</span></span>
+<span class="line"><span>│  │  └─index.vue       index页面</span></span>
+<span class="line"><span>│  └─list</span></span>
+<span class="line"><span>│     └─list.vue        list页面</span></span>
+<span class="line"><span>├─static                存放应用引用的本地静态资源（如图片、视频等）的目录，注意：静态资源都应存放于此目录</span></span>
+<span class="line"><span>├─uni_modules           存放uni_module 详见</span></span>
+<span class="line"><span>├─platforms             存放各平台专用页面的目录，详见</span></span>
+<span class="line"><span>├─nativeplugins         App原生语言插件 详见</span></span>
+<span class="line"><span>├─nativeResources       App端原生资源目录</span></span>
+<span class="line"><span>│  ├─android            Android原生资源目录 详见</span></span>
+<span class="line"><span>|  └─ios                iOS原生资源目录 详见</span></span>
+<span class="line"><span>├─hybrid                App端存放本地html文件的目录，详见</span></span>
+<span class="line"><span>├─wxcomponents          存放小程序组件的目录，详见</span></span>
+<span class="line"><span>├─unpackage             非工程代码，一般存放运行或发行的编译结果</span></span>
+<span class="line"><span>├─main.js               Vue初始化入口文件</span></span>
+<span class="line"><span>├─App.vue               应用配置，用来配置App全局样式以及监听 应用生命周期</span></span>
+<span class="line"><span>├─pages.json            配置页面路由、导航条、选项卡等页面类信息，详见</span></span>
+<span class="line"><span>├─manifest.json         配置应用名称、appid、logo、版本等打包信息，详见</span></span>
+<span class="line"><span>├─AndroidManifest.xml   Android原生应用清单文件 详见</span></span>
+<span class="line"><span>├─Info.plist            iOS原生应用配置文件 详见</span></span>
+<span class="line"><span>└─uni.scss              内置的常用样式变量</span></span></code></pre>
+</div><h1 id="pages-json" tabindex="-1">pages.json <a class="header-anchor" href="#pages-json" aria-label="Permalink to &quot;pages.json&quot;">&ZeroWidthSpace;</a></h1>
+<p><a href="https://uniapp.dcloud.net.cn/collocation/pages.html" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/collocation/pages.html</a></p>
+<p><code>pages.json</code> 文件用来对 uni-app 进行全局配置，决定页面文件的路径、窗口样式、原生的导航栏、底部的原生tabbar 等。</p>
+<ul>
+<li>pages</li>
+<li>style</li>
+<li>tabBar</li>
+</ul>
+<h1 id="manifest-json-应用配置" tabindex="-1">manifest.json 应用配置 <a class="header-anchor" href="#manifest-json-应用配置" aria-label="Permalink to &quot;manifest.json 应用配置&quot;">&ZeroWidthSpace;</a></h1>
+<p><a href="https://uniapp.dcloud.net.cn/collocation/manifest.html" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/collocation/manifest.html</a></p>
+<p><code>manifest.json</code> 文件是应用的配置文件，用于指定应用的名称、图标、权限等。HBuilderX 创建的工程此文件在根目录，CLI 创建的工程此文件在 src 目录。</p>
+<h1 id="组件" tabindex="-1">组件 <a class="header-anchor" href="#组件" aria-label="Permalink to &quot;组件&quot;">&ZeroWidthSpace;</a></h1>
+<h2 id="easycom组件规范" tabindex="-1">easycom组件规范 <a class="header-anchor" href="#easycom组件规范" aria-label="Permalink to &quot;easycom组件规范&quot;">&ZeroWidthSpace;</a></h2>
+<p>传统vue组件，需要安装、引用、注册，三个步骤后才能使用组件。<code>easycom</code>将其精简为一步。</p>
+<p>只要组件安装在项目的<code>components</code>目录下或<code>uni_modules</code>目录下，并符合<code>components/组件名称/组件名称.(vue|uvue)</code>目录结构（注意：当同时存在vue和uvue时，uni-app 项目优先使用 vue 文件，而uni-app x 项目优先使用 uvue 文件，<a href="https://doc.dcloud.net.cn/uni-app-x/component/#%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E5%90%8C%E6%97%B6%E5%85%BC%E5%AE%B9-uni-app-x-%E5%92%8C-uni-app-%E7%9A%84%E7%BB%84%E4%BB%B6" target="_blank" rel="noreferrer">详情</a>）。就可以不用引用、注册，直接在页面中使用。</p>
+<p>组件库选型：</p>
+<p>uni-ui：<a href="https://uniapp.dcloud.net.cn/component/uniui/uni-ui.html" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/component/uniui/uni-ui.html</a>
+<img src="http://aixiaodou.cn:8082/static-article/2024/09/uniapp/88a4875249144c9ea76ef61ca794380d.jpeg#pic_center" alt="在这里插入图片描述" data-fancybox="gallery"></p>
+<h1 id="api" tabindex="-1">api <a class="header-anchor" href="#api" aria-label="Permalink to &quot;api&quot;">&ZeroWidthSpace;</a></h1>
+<p><a href="https://uniapp.dcloud.net.cn/api/" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/api/</a></p>
+<p><code>uni-app</code>的 js API 由标准 ECMAScript 的 js API 和 uni 扩展 API 这两部分组成。</p>
+<p>标准 ECMAScript 的 js 仅是最基础的 js。浏览器基于它扩展了 window、document、navigator 等对象。小程序也基于标准 js 扩展了各种 wx.xx、my.xx、swan.xx 的 API。node 也扩展了 fs 等模块。</p>
+<p>uni-app 基于 ECMAScript 扩展了 uni 对象，并且 API 命名与小程序保持兼容。</p>
+<h1 id="教程" tabindex="-1">教程 <a class="header-anchor" href="#教程" aria-label="Permalink to &quot;教程&quot;">&ZeroWidthSpace;</a></h1>
+<h2 id="应用生命周期-全局样式" tabindex="-1">应用生命周期&amp;全局样式 <a class="header-anchor" href="#应用生命周期-全局样式" aria-label="Permalink to &quot;应用生命周期&amp;全局样式&quot;">&ZeroWidthSpace;</a></h2>
+<ul>
+<li>
+<p>应用生命周期仅可在<code>App.vue/App.nvue</code>中监听，在页面监听无效。</p>
+</li>
+<li>
+<p>在<code>App.vue</code>中，可以定义一些全局通用样式。</p>
+</li>
+</ul>
+<p>应用生命周期：</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th style="text-align:left">函数名</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">平台兼容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">*onLaunch</td>
+<td style="text-align:left">当<code>uni-app</code> 初始化完成时触发（全局只触发一次），参数为应用启动参数，同 <a href="https://uniapp.dcloud.net.cn/api/getLaunchOptionsSync.html#getlaunchoptionssync" target="_blank" rel="noreferrer">uni.getLaunchOptionsSync</a> 的返回值</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onShow</td>
+<td style="text-align:left">当 <code>uni-app</code> 启动，或从后台进入前台显示，参数为应用启动参数，同 <a href="https://uniapp.dcloud.net.cn/api/getLaunchOptionsSync.html#getlaunchoptionssync" target="_blank" rel="noreferrer">uni.getLaunchOptionsSync</a> 的返回值</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onHide</td>
+<td style="text-align:left">当 <code>uni-app</code> 从前台进入后台</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onError</td>
+<td style="text-align:left">当 <code>uni-app</code> 报错时触发</td>
+<td style="text-align:left">app-uvue 不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">onUniNViewMessage</td>
+<td style="text-align:left">对 <code>nvue</code> 页面发送的数据进行监听，可参考 <a href="https://uniapp.dcloud.io/tutorial/nvue-api?id=communication" target="_blank" rel="noreferrer">nvue 向 vue 通讯</a></td>
+<td style="text-align:left">app-uvue 不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">onUnhandledRejection</td>
+<td style="text-align:left">对未处理的 Promise 拒绝事件监听函数（2.8.1+ app-uvue 暂不支持）</td>
+<td style="text-align:left">app-uvue 不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">onPageNotFound</td>
+<td style="text-align:left">页面不存在监听函数</td>
+<td style="text-align:left">app-uvue 不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">onThemeChange</td>
+<td style="text-align:left">监听系统主题变化</td>
+<td style="text-align:left">app-uvue 不支持</td>
+</tr>
+<tr>
+<td style="text-align:left">onLastPageBackPress</td>
+<td style="text-align:left">最后一个页面按下Android back键，常用于自定义退出</td>
+<td style="text-align:left">app-uvue-android 3.9+</td>
+</tr>
+<tr>
+<td style="text-align:left">*onExit</td>
+<td style="text-align:left">监听应用退出</td>
+<td style="text-align:left">app-uvue-android 3.9+</td>
+</tr>
+</tbody>
+</table>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { defineComponent, ref } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> 'vue'</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { onReady } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@dcloudio/uni-app'</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> default</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> defineComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  setup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> title</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ref</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Hello'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    onReady</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">log</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'onReady'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">)</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    })</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    return</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      title</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span></code></pre>
+</div><h2 id="页面生命周期" tabindex="-1">页面生命周期 <a class="header-anchor" href="#页面生命周期" aria-label="Permalink to &quot;页面生命周期&quot;">&ZeroWidthSpace;</a></h2>
+<p>加<code>*</code>为常用方法</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th style="text-align:left">函数名</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">平台差异说明</th>
+<th style="text-align:left">最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">onInit</td>
+<td style="text-align:left">监听页面初始化，其参数同 onLoad 参数，为上个页面传递的数据，参数类型为 Object（用于页面传参），触发时机早于 onLoad</td>
+<td style="text-align:left">百度小程序</td>
+<td style="text-align:left">3.1.0+</td>
+</tr>
+<tr>
+<td style="text-align:left">*onLoad</td>
+<td style="text-align:left">监听页面加载，该钩子被调用时，响应式数据、计算属性、方法、侦听器、props、slots 已设置完成，其参数为上个页面传递的数据，参数类型为 Object（用于页面传参），参考<a href="https://uniapp.dcloud.net.cn/api/router#navigateto" target="_blank" rel="noreferrer">示例</a>。</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">*onShow</td>
+<td style="text-align:left">监听页面显示，页面每次出现在屏幕上都触发，包括从下级页面点返回露出当前页面</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">*onReady</td>
+<td style="text-align:left">监听页面初次渲染完成，此时组件已挂载完成，DOM 树($el)已可用，注意如果渲染速度快，会在页面进入动画完成前触发</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">*onHide</td>
+<td style="text-align:left">监听页面隐藏</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onUnload</td>
+<td style="text-align:left">监听页面卸载</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onResize</td>
+<td style="text-align:left">监听窗口尺寸变化</td>
+<td style="text-align:left">App、微信小程序、快手小程序</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">*onPullDownRefresh</td>
+<td style="text-align:left">监听用户下拉动作，一般用于下拉刷新，参考<a href="https://uniapp.dcloud.net.cn/api/ui/pulldown.html" target="_blank" rel="noreferrer">示例</a></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">*onReachBottom</td>
+<td style="text-align:left">页面滚动到底部的事件（不是scroll-view滚到底），常用于下拉下一页数据。具体见下方注意事项</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onTabItemTap</td>
+<td style="text-align:left">点击 tab 时触发，参数为Object，具体见下方注意事项</td>
+<td style="text-align:left">微信小程序、QQ小程序、支付宝小程序、百度小程序、H5、App、快手小程序、京东小程序</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onShareAppMessage</td>
+<td style="text-align:left">用户点击右上角分享</td>
+<td style="text-align:left">微信小程序、QQ小程序、支付宝小程序、抖音小程序、飞书小程序、快手小程序、京东小程序</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onPageScroll</td>
+<td style="text-align:left">监听页面滚动，参数为Object</td>
+<td style="text-align:left">nvue不支持</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onNavigationBarButtonTap</td>
+<td style="text-align:left">监听原生标题栏按钮点击事件，参数为Object</td>
+<td style="text-align:left">App、H5</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onBackPress</td>
+<td style="text-align:left">监听页面返回，返回 event = {from:backbutton、 navigateBack} ，backbutton 表示来源是左上角返回按钮或 android 返回键；navigateBack表示来源是 uni.navigateBack；<a href="https://uniapp.dcloud.net.cn/tutorial/page.html#onbackpress" target="_blank" rel="noreferrer">详见</a></td>
+<td style="text-align:left">app、H5、支付宝小程序</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">onNavigationBarSearchInputChanged</td>
+<td style="text-align:left">监听原生标题栏搜索输入框输入内容变化事件</td>
+<td style="text-align:left">App、H5</td>
+<td style="text-align:left">1.6.0</td>
+</tr>
+<tr>
+<td style="text-align:left">onNavigationBarSearchInputConfirmed</td>
+<td style="text-align:left">监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发。</td>
+<td style="text-align:left">App、H5</td>
+<td style="text-align:left">1.6.0</td>
+</tr>
+<tr>
+<td style="text-align:left">onNavigationBarSearchInputClicked</td>
+<td style="text-align:left">监听原生标题栏搜索输入框点击事件（pages.json 中的 searchInput 配置 disabled 为 true 时才会触发）</td>
+<td style="text-align:left">App、H5</td>
+<td style="text-align:left">1.6.0</td>
+</tr>
+<tr>
+<td style="text-align:left">onShareTimeline</td>
+<td style="text-align:left">监听用户点击右上角转发到朋友圈</td>
+<td style="text-align:left">微信小程序</td>
+<td style="text-align:left">2.8.1+</td>
+</tr>
+<tr>
+<td style="text-align:left">onAddToFavorites</td>
+<td style="text-align:left">监听用户点击右上角收藏</td>
+<td style="text-align:left">微信小程序、QQ小程序</td>
+<td style="text-align:left">2.8.1+</td>
+</tr>
+</tbody>
+</table>
+<h2 id="组件生命周期" tabindex="-1">组件生命周期 <a class="header-anchor" href="#组件生命周期" aria-label="Permalink to &quot;组件生命周期&quot;">&ZeroWidthSpace;</a></h2>
+<p><code>uni-app</code> 组件支持的生命周期，与vue标准组件的生命周期相同。这里<strong>没有页面级的onLoad等生命周期</strong>：</p>
+<p>加<code>*</code>为常用方法</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th style="text-align:left">函数名</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">平台差异说明</th>
+<th style="text-align:left">最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">beforeCreate</td>
+<td style="text-align:left">在实例初始化之前被调用。<a href="https://v2.cn.vuejs.org/v2/api/#beforeCreate" target="_blank" rel="noreferrer">详见</a></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">*created</td>
+<td style="text-align:left">在实例创建完成后被立即调用。<a href="https://v2.cn.vuejs.org/v2/api/#created" target="_blank" rel="noreferrer">详见</a></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">beforeMount</td>
+<td style="text-align:left">在挂载开始之前被调用。<a href="https://v2.cn.vuejs.org/v2/api/#beforeMount" target="_blank" rel="noreferrer">详见</a></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">*mounted</td>
+<td style="text-align:left">挂载到实例上去之后调用。<a href="https://v2.cn.vuejs.org/v2/api/#mounted" target="_blank" rel="noreferrer">详见</a> 注意：此处并不能确定子组件被全部挂载，<br />如果需要子组件完全挂载之后在执行操作可以使用<code>$nextTick</code><a href="https://v2.cn.vuejs.org/v2/api/#vm-nextTick" target="_blank" rel="noreferrer">Vue官方文档</a></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">beforeUpdate</td>
+<td style="text-align:left">数据更新时调用，发生在虚拟 DOM 打补丁之前。<a href="https://v2.cn.vuejs.org/v2/api/#beforeUpdate" target="_blank" rel="noreferrer">详见</a></td>
+<td style="text-align:left">仅H5平台支持</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">updated</td>
+<td style="text-align:left">由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。<a href="https://v2.cn.vuejs.org/v2/api/#updated" target="_blank" rel="noreferrer">详见</a></td>
+<td style="text-align:left">仅H5平台支持</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">beforeDestroy</td>
+<td style="text-align:left">实例销毁之前调用。在这一步，实例仍然完全可用。<a href="https://v2.cn.vuejs.org/v2/api/#beforeDestroy" target="_blank" rel="noreferrer">详见</a></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">destroyed</td>
+<td style="text-align:left">Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，<br />所有的事件监听器会被移除，所有的子实例也会被销毁。<a href="https://v2.cn.vuejs.org/v2/api/#destroyed" target="_blank" rel="noreferrer">详见</a></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="页面通讯" tabindex="-1">页面通讯 <a class="header-anchor" href="#页面通讯" aria-label="Permalink to &quot;页面通讯&quot;">&ZeroWidthSpace;</a></h2>
+<ul>
+<li>
+<p>uni.$emit(eventName,OBJECT) ：触发全局的自定义事件。</p>
+</li>
+<li>
+<p>uni.$on(eventName,callback)：监听全局的自定义事件，事件可以由 uni.$emit 触发。</p>
+</li>
+<li>
+<p>uni.$once(eventName,callback)：监听全局的自定义事件。事件可以由 uni.$emit 触发，但是只触发一次，在第一次触发之后移除监听器。</p>
+</li>
+<li>
+<p>uni.$off(eventName, callback)：移除全局自定义事件监听器。</p>
+</li>
+</ul>
+<h2 id="路由" tabindex="-1">路由 <a class="header-anchor" href="#路由" aria-label="Permalink to &quot;路由&quot;">&ZeroWidthSpace;</a></h2>
+<p><code>uni-app</code>页面路由为框架统一管理，开发者需要在<a href="https://uniapp.dcloud.net.cn/collocation/pages#pages" target="_blank" rel="noreferrer">pages.json</a>里配置每个路由页面的路径及页面样式。类似小程序在 app.json 中配置页面路由一样。</p>
+<div class="language-json vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">json</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    "pages"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">            "path"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"pages/index/index"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">            "style"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: { </span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">...</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        }, {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">            "path"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"pages/login/login"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">            "style"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: { </span><span style="--shiki-light:#B31D28;--shiki-light-font-style:italic;--shiki-dark:#FDAEB7;--shiki-dark-font-style:italic">...</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    ]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
+</div><p><code>uni-app</code> 有两种页面路由跳转方式：使用<a href="https://uniapp.dcloud.net.cn/component/navigator" target="_blank" rel="noreferrer">navigator</a>组件跳转、调用<a href="https://uniapp.dcloud.net.cn/api/router" target="_blank" rel="noreferrer">API</a>跳转。</p>
+<h2 id="互相引用" tabindex="-1">互相引用 <a class="header-anchor" href="#互相引用" aria-label="Permalink to &quot;互相引用&quot;">&ZeroWidthSpace;</a></h2>
+<h3 id="引用组件" tabindex="-1">引用组件 <a class="header-anchor" href="#引用组件" aria-label="Permalink to &quot;引用组件&quot;">&ZeroWidthSpace;</a></h3>
+<div class="language-vue vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&#x3C;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	&#x3C;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">view</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">		&#x3C;!-- 2.使用组件 --></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">		&#x3C;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">uni-rate</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> text</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"1"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">>&#x3C;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">uni-rate</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">	&#x3C;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">view</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&#x3C;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">template</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&#x3C;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">script</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> setup</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">	// 1. 导入组件</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">	import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> uniRate </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@/components/uni-rate/uni-rate.vue'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&#x3C;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">script</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span></code></pre>
+</div><h3 id="引用js、json" tabindex="-1">引用js、json <a class="header-anchor" href="#引用js、json" aria-label="Permalink to &quot;引用js、json&quot;">&ZeroWidthSpace;</a></h3>
+<div class="language-js vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 绝对路径，@指向项目根目录，在cli项目中@指向src目录</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> add </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@/common/add.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// 相对路径</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> add </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '../../common/add.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span></code></pre>
+</div><h3 id="引用css" tabindex="-1">引用css <a class="header-anchor" href="#引用css" aria-label="Permalink to &quot;引用css&quot;">&ZeroWidthSpace;</a></h3>
+<div class="language-html vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">html</span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0" v-pre=""><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&#x3C;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">style</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    @import</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> "../../common/uni.css"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    .uni-card</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">        box-shadow</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">none</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&#x3C;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">style</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">></span></span></code></pre>
+</div><h2 id="条件编译处理多端差异" tabindex="-1">条件编译处理多端差异 <a class="header-anchor" href="#条件编译处理多端差异" aria-label="Permalink to &quot;条件编译处理多端差异&quot;">&ZeroWidthSpace;</a></h2>
+<p><a href="https://uniapp.dcloud.net.cn/tutorial/platform.html" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/tutorial/platform.html</a></p>
+<p>条件编译是用特殊的注释作为标记，在编译时根据这些特殊的注释，将注释里面的代码编译到不同平台。</p>
+<h3 id="使用方法" tabindex="-1">使用方法 <a class="header-anchor" href="#使用方法" aria-label="Permalink to &quot;使用方法&quot;">&ZeroWidthSpace;</a></h3>
+<p>以 <code>#ifdef</code> 或 <code>#ifndef</code> 加 <code>%PLATFORM%</code> 开头，以 <code>#endif</code> 结尾。</p>
+<ul>
+<li><code>#ifdef</code>：if defined 仅在某平台存在</li>
+<li><code>#ifndef</code>：if not defined 除了某平台均存在</li>
+<li><code>%PLATFORM%</code>：平台名称</li>
+</ul>
+<table tabindex="0">
+<thead>
+<tr>
+<th>条件编译写法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#ifdef <strong>APP-PLUS</strong> 需条件编译的代码 #endif</td>
+<td>仅出现在 App 平台下的代码</td>
+</tr>
+<tr>
+<td>#ifndef <strong>H5</strong> 需条件编译的代码 #endif</td>
+<td>除了 H5 平台，其它平台均存在的代码（注意if后面有个n）</td>
+</tr>
+<tr>
+<td>#ifdef <strong>H5</strong> || <strong>MP-WEIXIN</strong> 需条件编译的代码 #endif</td>
+<td>在 H5 平台或微信小程序平台存在的代码（这里只有||，不可能出现&amp;&amp;，因为没有交集）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="插件市场" tabindex="-1">插件市场 <a class="header-anchor" href="#插件市场" aria-label="Permalink to &quot;插件市场&quot;">&ZeroWidthSpace;</a></h1>
+<p><a href="https://uniapp.dcloud.net.cn/plugin/" target="_blank" rel="noreferrer">https://uniapp.dcloud.net.cn/plugin/</a></p>
+<h1 id="问答社区" tabindex="-1">问答社区 <a class="header-anchor" href="#问答社区" aria-label="Permalink to &quot;问答社区&quot;">&ZeroWidthSpace;</a></h1>
+<p><a href="https://ask.dcloud.net.cn/explore/" target="_blank" rel="noreferrer">https://ask.dcloud.net.cn/explore/</a></p>
+<p><h3 style="color:#3451b2"><a href="https://appbeebee.com/posts/2024/09/19-uniapp.html">文章涉及下载地址访问原站：APP比比</a></h3></p>]]></content:encoded>
+            <enclosure url="http://aixiaodou.cn:8082/static-article/cover/uniapp.png" length="0" type="image/png"/>
+        </item>
+    </channel>
+</rss>

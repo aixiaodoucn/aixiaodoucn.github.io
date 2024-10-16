@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.ByHFH8oc.js";const m=JSON.parse('{"title":"首页","description":"","frontmatter":{"index":true,"title":"首页","aside":true,"sidebar":true},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),r={name:"index.md"};function n(i,s,d,o,c,p){return t(),a("div")}const f=e(r,[["render",n]]);export{m as __pageData,f as default};
